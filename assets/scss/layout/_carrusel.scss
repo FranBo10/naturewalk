@@ -1,0 +1,410 @@
+.card-image-slider {
+  position: relative;
+  min-height: 450px;
+  color: #fff;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+  @include media(desktop) {
+    min-height: 650px;
+  }
+}
+
+.content-slider-text {
+  position: absolute;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  transition: opacity 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  bottom: 0;
+}
+
+.content-slider-title {
+  font-size: $big-font-size;
+}
+
+.content-slider-subtitle {
+  font-size: $main-font-size;
+}
+
+.content-slider-button {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  z-index: 10000;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+  z-index: unset !important;
+}
+
+.menu__detalle-tour {
+  width: 100%;
+  height: 70px;
+  margin-top: 10px;
+  transition: margin-top 0.3s ease;
+}
+
+.detalle-tour {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  margin: auto;
+  padding: 0 20px;
+}
+
+.detalle-tour ul li {
+  border-bottom: 2px solid $color-primary;
+}
+
+@include media(tablet) {
+  .detalle-tour {
+    display: flex;
+    justify-content: center;
+  }
+  .detalle-tour ul li:nth-child(5) {
+    display: none;
+  }
+}
+
+@include media(smartPhone) {
+  .detalle-tour {
+    display: flex;
+    justify-content: flex-start;
+  }
+  .detalle-tour ul li:nth-child(4) {
+    display: none;
+  }
+}
+
+.detalle-tour > a {
+  font-size: $big-font-size;
+  color: $color-white;
+  text-decoration: none;
+}
+
+.detalle-tour > ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  list-style: none;
+}
+
+.detalle-tour > ul > li {
+  position: relative;
+  list-style: none;
+  height: 100%;
+  padding: 0px 4px;
+}
+
+.detalle-tour > ul > li > a {
+  display: flex;
+  color: #000;
+  padding: 10px;
+  transition: all 300ms ease;
+  text-decoration: none;
+}
+
+.detalle-tour > ul > li > a:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+  background-color: $color-primary;
+  color: #fff;
+}
+
+.container-detalles {
+  padding: 0px 40px;
+}
+
+.desconectado {
+  color: $color-primary;
+  text-decoration: none;
+}
+
+@include media(smartPhone) {
+  .container-detalles {
+    padding: 0px 10px;
+  }
+}
+
+.detalle-descripcion p {
+  margin-bottom: 5px;
+  line-height: 2.5rem;
+}
+
+.descripcion-hidden {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, opacity 0.5s ease;
+}
+
+.descripcion-visible {
+  max-height: 1000px;
+  opacity: 1;
+  transition: max-height 0.5s ease, opacity 0.5s ease;
+  font-size: $main-font-size;
+  line-height: 2.5rem;
+}
+
+.descripcion-container {
+  position: relative;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+.descripcion-container a {
+  text-decoration: none;
+  color: $color-primary;
+  font-size: $main-font-size;
+}
+
+#ocultar-link {
+  position: absolute;
+  top: 10;
+  left: 0;
+  display: none;
+}
+
+.detalle-idioma p,
+.detalle-incluido p,
+.detalle-noincluido p,
+.detalle-reservar p,
+.detalle-accesibilidad p,
+.detalle-mascotas p,
+.detalle-faq p,
+.detalle-faq-2 p,
+.detalle-cancelacion p {
+  margin-top: 15px;
+}
+
+.detalle-precio {
+  h3 {
+    padding: $padding 0;
+  }
+
+  p {
+    font-size: $main-font-size;
+  }
+}
+
+.container-detalles > h3 {
+  padding: $padding 0;
+}
+
+.detalle-general h3 {
+  padding: $padding 0;
+}
+
+.detalle-titulo {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  i {
+    font-size: $medium-font-size;
+    color: $color-primary;
+  }
+  h5 {
+    margin-top: 5px;
+  }
+}
+
+.detalle-duracion {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 30px;
+}
+
+.detalle-idioma {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.detalle-incluido {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 30px;
+}
+
+.detalle-noincluido {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 30px;
+}
+
+.detalle-reservar {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.detalle-accesibilidad {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 30px;
+}
+
+.detalle-mascotas {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 30px;
+}
+
+.detalle-faq {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 30px;
+}
+
+.detalle-faq-2 ul {
+  list-style: none;
+  margin-top: 10px;
+  font-size: $main-font-size;
+}
+
+.titulo-cancelacion {
+  display: inline-block;
+  border-bottom: 2px solid $color-primary;
+}
+
+.titulo-ubicacion {
+  display: flex;
+  gap: 10px;
+}
+
+.detalle-location {
+  display: flex;
+  flex-direction: column;
+}
+
+.detalle-location i {
+  color: $color-primary;
+}
+
+.meeting-point,
+.ubicacion {
+  display: flex;
+  gap: 20px;
+}
+
+.meeting-point h3 {
+  border-bottom: 1px solid $color-primary;
+  margin-bottom: 10px;
+}
+
+.ubicacion {
+  margin-bottom: 3rem;
+  @include media(tablet) {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}
+
+.mapa {
+  @include flexColumn();
+
+  iframe {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  @include media(smartPhone) {
+    margin: 0 auto;
+    max-width: calc(100% - 20px);
+  }
+}
+
+.container-detalles-reserva {
+  display: flex;
+  justify-content: flex-start;
+  text-align: center;
+}
+
+.full-width {
+  width: 60%;
+}
+
+.comentario {
+  padding: $padding;
+  background-color: $color-white;
+  box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.titulo__comentarios {
+  text-align: center;
+  font-weight: lighter;
+}
+
+.comentario-items {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-left: 10px;
+  img {
+    margin-top: 10px;
+  }
+}
+
+.comentario-body {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0px 0px 10px;
+}
+
+.info {
+  display: flex;
+  gap: 10px;
+}
+
+.pais {
+  display: flex;
+  justify-content: flex-start;
+  img {
+    margin: 2.5px;
+  }
+}
+
+.meta {
+  font-size: $small-font-size;
+  margin-top: 2px;
+}
+
+.stars, .valoracion {
+  margin-top: 10px;
+  min-width: 140px;
+}
+
+.stars i, .valoraciones i {
+  color: black;
+  font-size: $big-font-size;
+}
+
+.alert-danger {
+  font-size: $main-font-size;
+  margin-top: 10px;
+}
+
+.contenido {
+  margin-top: 10px; /* Espacio entre las valoraciones y el contenido */
+}
+
+.carousel-inner-cards {
+  display: flex;
+}
+
+.carousel-item-cards {
+  display: block;
+  margin-right: 0;
+  flex: 0 0 calc(100% / 3);
+}

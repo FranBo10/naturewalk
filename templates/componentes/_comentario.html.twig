@@ -1,0 +1,38 @@
+<div class="comentario my-3">
+  <div class="comentario-items">
+    <img
+      class="rounded-circle"
+      src="{{ asset('uploads/images/avatars/' ~ comentario.autor.avatar ~ '.jpg') }}"
+      alt="avatar"
+      style="width: 80px; height: 80px"
+    />
+    <div class="comentario-body">
+      <div class="nombre">
+        <h3>{{ comentario.autor.nombre }} {{ comentario.autor.apellidos }}</h3>
+      </div>
+      <div class="info">
+        <div class="pais">
+          <img
+            src="https://flagcdn.com/16x12/{{
+              comentario.autor.pais | lower
+            }}.png"
+            class="me-3"
+            width="16"
+            height="12"
+            alt="{{ comentario.autor.pais | lower }}"
+          />
+          <p>{{ comentario.autor.pais | raw }}</p>
+        </div>
+        <div class="meta">{{ comentario.fechaRegistro|date("d/m/Y") }}</div>
+      </div>
+      <div class="valoraciones">
+        {% for i in 1..comentario.nota %}
+        <i class="las la-star" style="color: gold"></i>
+        {% endfor %}
+      </div>
+      <div class="contenido">
+        <p>{{ comentario.contenido | raw }}</p>
+      </div>
+    </div>
+  </div>
+</div>

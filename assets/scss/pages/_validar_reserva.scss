@@ -1,0 +1,120 @@
+.reserva-container {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  color: $color-black;
+  max-width: 100%; /* Establecer el ancho máximo al 100% para dispositivos pequeños */
+  box-sizing: border-box; /* Incluir el padding y el borde en el ancho total */
+  overflow: hidden; /* Evitar desbordamientos horizontales */
+  @include media(tablet) {
+    @include flexCenter(column);
+    img {
+      width: 550px;
+      height: 350px;
+    }
+  }
+}
+
+.reserva-container img {
+  margin-top: 30px;
+}
+
+.reserva-container img {
+  @media(max-width: 600px) {
+      width: 500px;
+      height: 350px;
+  }
+  @include media(smartPhone) {
+    width: 450px;
+    height: 350px;
+  }
+  @include media(phone) {
+    width: 250px;
+    height: 350px;
+  }
+}
+
+
+
+.detalles-reserva {
+  @include flexColumn();
+
+  ul {
+    list-style-type: none;
+  }
+
+  ul h3 {
+    margin-top: $font-h3;
+  }
+
+  @include media(laptop) {
+    ul h3 {
+      font-size: 2rem;
+    }
+  }
+
+  ul li {
+    margin: 20px 0;
+  }
+
+  ul li p {
+    font-size: $main-font-size;
+  }
+}
+
+@media (max-width: 998px) {
+  .detalles-reserva {
+    width: 100%;
+    ul {
+      width: 100%;
+    }
+  }
+}
+
+.button {
+  text-align: center;
+}
+
+.datos_form_reserva-container {
+  width: 80%;
+  margin: auto;
+  height: 35px;
+  color: $color-gray-light;
+  background-color: $color-tertiary;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  margin-top: 1rem;
+  position: relative;
+  padding: 0.5rem;
+}
+
+.datos_form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  p {
+    font-size: calc($main-font-size / 1.25);
+  }
+}
+
+.options_datos_reserva {
+  width: 100%;
+  background-color: #fff;
+  padding: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  max-height: 300px;
+  overflow-y: auto;
+  gap: 10px;
+}
+
+.options_datos_reserva.active {
+  display: none;
+}
+
+.user_datos_reserva {
+  width: 100%;
+  height: 40vh;
+  margin: auto;
+  color: $color-black;
+  border: 1px solid $color-gray-dark;
+}

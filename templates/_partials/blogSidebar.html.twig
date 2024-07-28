@@ -1,0 +1,60 @@
+<aside class="col-sm-3">
+  <div class="widget">
+    <div class="widget-title first">
+      <h4>Último Post</h4>
+    </div>
+    <ul class="comments-list">
+      {% for blog in blogs %}
+      <li>
+        <div class="alignleft">
+          <a href="#0"
+            ><img src="{{ asset("uploads/images/blog/" ~ blog.imagen) }}"
+            alt="{{ blog.titulo }}" /></a
+          >
+        </div>
+        <small
+          >{{ blog.titulo }} - {{ blog.fechaRegistro|date('d/m/y') }}</small
+        >
+        <h3>
+          <a
+            class="text-black text-decoration-none hover-text-orange"
+            href="#"
+            title=""
+          >
+            {% if blog.descripcionCorta|split(' ')|length > 10 %}
+            {{ blog.descripcionCorta|split(' ')|slice(0, 10)|join(' ') }}... {%
+            else %}
+            {{ blog.descripcionCorta }}
+            {% endif %}
+          </a>
+        </h3>
+      </li>
+    </ul>
+    {% endfor %}
+  </div>
+  <!-- /widget -->
+  <div class="widget">
+    <div class="widget-title">
+      <h4>Categorias</h4>
+    </div>
+    <ul class="cats">
+      {% for categoria in categorias %}
+      <li>
+        <a href="{{ path('blog', {'id': categoria.id}) }}">{{ categoria.titulo }} <span>{{ categoria.blogs | length }}</span></a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <!-- /widget -->
+  <div class="widget">
+    <div class="widget-title">
+      <h4>Tags populares</h4>
+    </div>
+    <div class="tags">
+      {% for tag in etiquetas %}        
+      <a href="#">{{ tag.titulo }}</a>
+      {% endfor %}
+    </div>
+  </div>
+  <!-- /widget -->
+</aside>

@@ -1,0 +1,167 @@
+{% extends 'base.html.twig' %} {% block title %}Reservar{% endblock %} {%
+  block body %}
+  <div id="main-container" class="container-fluid my-5">
+    {% for message in app.flashes('danger') %}
+    <div class="alert alert-danger text-center w-50 mx-auto my-2">
+      <p>{{ message }}</p>
+    </div>
+    {% endfor %}
+    <div class="titulo__reservas">
+      <h2 class="text-center w-100 my-3 pb-3 border-bottom border-dark">Realiza tu reserva</h2>
+    </div>
+    {% for tour in reserva.tours %}
+    <div class="reserva-container container-fluid">
+      <img
+        src="{{ asset('uploads/images/' ~ tour.imagen) }}"
+        alt="{{ tour.titulo }}"
+        width="350px"
+        height="280px"
+      />   
+      <div class="detalles-reserva">
+        <ul>
+          <h3>{{ tour.titulo | title }} : {{ tour.horaInicio|date("H:i") }} h -
+                {{ tour.horaFin|date("H:i") }} h</h3> 
+          <li>
+            {% if tour.precio == 0 %}
+              <p><span>Precio: Free Tour</span></p>
+              {% else %}
+              <p>{{ tour.precio/100|number_format(2, '.') }} €</p>
+              {% endif %}
+            </td>
+          </li>
+  
+          {{
+            form_start(form, { attr: { novalidate: "novalidate" } })
+          }}
+          <li>
+              {{ form_label(form.cantidad_adultos, 'Adultos')}} 
+              {{ form_widget(form.cantidad_adultos, {'attr': {'class': 'task_field'}}) }}
+            
+          </li>
+          <li>
+            {{ form_label(form.cantidad_kids, 'Niños')}} 
+              {{ form_widget(form.cantidad_kids, {'attr': {'class': 'task_field'}}) }}
+            
+          </li>
+          <li>
+            {{ form_label(form.fecha_evento, 'Fecha de tour') }}
+      {{ form_widget(form.fecha_evento, {
+          'attr': {
+              'class': 'task_field datepicker',  
+              'placeholder': 'Selecciona una fecha', 
+          }
+      }) }}         
+          </li>    
+          <li>
+              <div class="buttons">
+                <a href="{{ path('home') }}" class="btn-tertiary my-3">Ver más tours</a>
+                {% if app.user %}
+                  <button type="submit" class="btn-primary">Validar reserva</button>
+                 {% else %}
+                  <a href="{{ path('app_login') }}" class="btn-primary-card">
+                     Reservar
+                  </a>
+                {% endif %}
+              {{ form_end(form) }}
+              </div>
+          </li>   
+        </ul>
+      </div>
+      
+    </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% endblock %}
+    {# {% if app.user %}
+    <section class="table__section">
+      <table class="table">
+        <thead class="table__head">
+          <tr>
+            <th class="align-middle">Tour</th>
+            <th class="align-middle">Precio</th>
+            <th class="align-middle">Adultos</th>
+            <th class="align-middle">Niños</th>
+            <th class="align-middle">Fecha</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for tour in reserva.tours %}
+  
+          <tr>
+            <td class="text-center align-middle">
+              <img
+                src="{{ asset('uploads/images/' ~ tour.imagen) }}"
+                alt="{{ tour.titulo }}"
+                style="object-fit: cover"
+                width="100%"
+                height="100"
+              />
+              <div class="table__titulo">
+                {{ tour.titulo | title }} : {{ tour.horaInicio|date("H:i") }} h -
+                {{ tour.horaFin|date("H:i") }} h
+              </div>
+            </td>
+            <td class="text-center align-middle">
+              {% if tour.precio == 0 %}
+              <p><span>Free Tour</span></p>
+              {% else %}
+              <p>{{ tour.precio/100|number_format(2, '.') }} €</p>
+              {% endif %}
+            </td>
+            {% endfor %}
+            {{
+              form_start(form, { attr: { novalidate: "novalidate" } })
+            }}
+            <td class="text-center align-middle">
+              {{ form_row(form.cantidad_adultos) }}
+            </td>
+  
+            <td class="text-center align-middle">
+              {{ form_row(form.cantidad_kids) }}
+            </td>
+            <td class="text-center align-middle">
+              {{ form_row(form.fecha_evento, {'attr': {'name': 'fechaEvento'}}) }}
+            </td>
+          </tr>
+        </tbody>
+      </table> #}
+      {#
+      <tfoot>
+        <tr>
+          <td class="text-left align-middle">
+            {% if totalReserva == 0 %}
+            <p><span>Total: Free Tour</span></p>
+            {% else %}
+            <p>Total: {{ totalReserva / 100 | number_format(2, '.') }} €</p>
+            {% endif %}
+          </td>
+        </tr>
+      </tfoot>
+      #}
+    {# </section>
+  
+    <div class="row col-12">
+      <div class="col-6">
+        <div class="buttons">
+          <a href="{{ path('home') }}" class="btn-secondary me-3">
+            Vaciar el carrito
+          </a>
+          <a href="{{ path('home') }}" class="btn-tertiary">Ver más tours</a>
+        </div>
+      </div>
+      <div class="col-6 text-end">
+        <button type="submit" class="btn-primary me-3">Validar reserva</button>
+        {{ form_end(form) }}
+      </div>
+    </div>
+    <!-- Fin del bloque de formulario de datos personales -->
+    {% else %}
+    <div class="container text-center my-auto">
+      <h3>Tu carrito está vacío</h3>
+    </div>
+    {% endif %}
+  </div>
+  {% endblock %} #}
+  

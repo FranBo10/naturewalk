@@ -1,0 +1,64 @@
+html {
+  font-size: 62.5%; // 1rem = 10px; 10px/16px = 62.5%
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  font-family: "Nunito", sans-serif!important;
+  font-size: $small-font-size;
+  box-sizing: border-box;  
+  background-color: $color-gray-light!important;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: $color-black;
+  font-size: $main-font-size;
+}
+
+p,
+th,
+td {
+  font-size: $main-font-size;
+  line-height: 2rem;
+}
+
+h1 {
+  font-size: $font-h1!important;
+}
+
+h2 {
+  font-size: $font-h2;
+}
+
+h3 {
+  font-size: $font-h3;
+}
+
+label {
+  font-size: $main-font-size;
+}
+
+::selection {
+  background-color: $color-secondary;
+  color: $color-white;
+}
+
+.form-control {
+  font-size: $medium-font-size !important;
+}
+
+

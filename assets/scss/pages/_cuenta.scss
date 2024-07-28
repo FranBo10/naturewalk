@@ -1,0 +1,117 @@
+
+.titulo__cuenta {
+  font-size: 24px;
+  color: $color-primary !important;
+  text-shadow: 0 0 1px $color-black;
+  padding: $padding 0;
+
+}
+
+.cuenta-container {
+  width: 100%;
+  background-color: $color-white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  margin-bottom: 1rem;
+  position: relative;
+  padding: $padding;
+}
+
+.cuenta-container .cuenta-elementos {
+  display: flex;
+  top: 1.5rem;
+  left: 1rem;
+}
+
+.cuenta-container .cuenta-elementos .cuenta-imagen img {
+  border-radius: 50%;
+  width: 70%;
+}
+
+.cuenta-container .cuenta-elementos .cuenta-detalles ul {
+  list-style: none;
+  line-height: 1.6;
+  margin-top: 0.5rem;
+}
+
+.cuenta-detalles > ul > li {
+  font-size: $medium-font-size;
+  color: $color-gray-dark;
+}
+
+
+.cuenta-reservas {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  i {
+    margin-bottom: 10px;
+  }
+}
+
+.datos_perso-container,
+.datos_factu-container {
+  width: 100%;
+  background-color: $color-white;
+  margin: 1rem auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.perso_form-container {
+  position: relative;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 2px 0 0 rgba(243, 243, 243, 0.555);
+  display: none;
+  transition: display 0.3s;
+}
+
+.perso_form-container.active {
+  display: block;
+}
+
+.datos_perso-elementos,
+.datos_factu-elementos {
+  display: flex;
+  height: 55px;
+  background: #fff;
+  padding: 20px;
+  font-size: $main-font-size;
+  font-weight: 400;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  box-shadow: 2px 0 0 rgba(243, 243, 243, 0.555);
+}
+
+.datos_perso-elementos i,
+.datos_factu-elementos i {
+  font-size: $small-font-size;
+  transition: 0.3s;
+  font-weight: 900;
+  color: $color-primary !important;
+}
+
+.datos_perso-elementos.active .perso_form-container,
+.datos_factu-elementos.active .perso_form-container {
+  display: block;
+}
+
+.datos_perso-elementos.active i,
+.datos_factu-elementos.active i {
+  transform: rotate(-180deg);
+}
+
+.datos_perso-container a,
+.datos_factu-container a,
+.datos_form_reserva-container a {
+  text-decoration: none;
+  color: $color-gray-dark;
+}
+
+@include media(smartPhone) {
+  #main-container, .calendario-container {
+    min-height: 45vh;
+  }
+}

@@ -1,0 +1,16 @@
+<h3>Bienvenido a FreetourGo !</h3>
+
+<p>Para restablecer su contraseña, visite el siguiente enlace</p>
+
+<a href="{{ url('app_reset_password', { token: resetToken.token }) }}">{{
+  url("app_reset_password", { token: resetToken.token })
+}}</a>
+
+<p>
+  Este link caducará en
+  {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle')
+
+  }}.
+</p>
+
+<p>Hasta pronto !</p>

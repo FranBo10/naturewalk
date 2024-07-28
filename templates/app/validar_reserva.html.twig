@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %} 
+{% block title %} Validar reserva {% endblock %}
+
+{% block body %}
+    <div id="main-container" class="container my-5">
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success text-center w-50 mx-auto my-2">
+                <p>{{ message }}</p>
+            </div>
+        {% endfor %}
+
+        <div class="titulo__reservas">
+            <h2 class="text-center w-100 my-3 pb-3 border-bottom border-dark">Resumen de reserva</h2>
+        </div>
+
+        {% for tour in reserva.tours %}
+            <div class="reserva-container">
+                <img
+                    src="{{ asset('uploads/images/' ~ tour.imagen) }}"
+                    alt="{{ tour.titulo }}"
+                    width="350px"
+                    height="280px"
+                />
+
+                {% if app.user.reservas is not empty %}
+                    <div class="detalles-reserva">
+                        <ul>
+                            <h3>{{ tour.titulo }}</h3>
+                            <li>
+                                <p class="card-title">N°. reserva: {{ reserva.referencia }}</p>
+                            </li>
+
+                            {% if reserva.detallesReserva is not null %}
+                                <li>
+                                    <p class="card-title">
+                                        Fecha del tour: {{ reserva.detallesReserva.fechaEvento|date('d/m/y') }}
+                                    </p>
+                                </li>
+                                <li>
+                                    <p class="card-title">Adultos: {{ reserva.detallesReserva.cantidadAdultos }}</p>
+                                </li>
+                                <li>
+                                    <p class="card-title">Niños: {{ reserva.detallesReserva.cantidadKids }}</p>
+                                </li>
+
+                                {% if reserva.detallesReserva.totalReserva == 0 %}
+                                    <li>
+                                        <p class="card-title">Total: Free Tour</p>
+                                    </li>
+                                    <li>
+                                        <div class="button">
+                                            <a href="{{ path('reservas') }}" class="btn-tertiary me-3">Ver mis reservas</a>
+                                        </div>
+                                    </li>
+                                {% else %}
+                                    <li>
+                                        <p class="card-title">
+                                            Total: {{ reserva.detallesReserva.totalReserva/100|number_format(2, '.') }} €
+                                        </p>
+                                    </li>
+                                    {% if tour.precio != 0 %}
+                                        <div class="button">
+                                            <a href="#" class="btn-primary me-3">Proceder al pago</a>
+                                        </div>
+                                    {% endif %}
+                                {% endif %}
+                            {% else %}
+                                <li>
+                                    <p class="card-title">Detalles de reserva no disponibles.</p>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                {% else %}
+                    <p>No hay reservas disponibles.</p>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

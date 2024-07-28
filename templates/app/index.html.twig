@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %} {% block title %} Bienvenido {% endblock %} {%
+block nav %}{% include '_partials/_menu_nav.html.twig' %} {% endblock %} {%
+block body %}
+<section class="hero">
+  <div class="hero-background">
+    <div class="hero-content">
+      {% for message in app.flashes('success') %}
+      <div class="alert alert-success text-center w-50 mx-auto my-2">
+        <p>{{ message }}</p>
+      </div>
+      {% endfor %}
+      <h3 class="animation text-white fs-2">Bienvenido a tu bienestar</h3>
+      <p class="animation text-white fs-3">
+        Acompáñanos y descubre lugares nuevos llenos de vida y naturaleza
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="servicios">
+  <div class="titulo__servicios">
+    <h2>Nuestros tours</h2>
+  </div>
+  <div class="cards">
+    {% for item in tours %} {% if item.isEstado %}
+    <article class="card">
+      <img src="{{ asset("uploads/images/" ~ item.imagen) }}" alt="{{
+        item.titulo
+      }}" />
+      <div class="content card-text">
+        <h4>{{ item.titulo }}</h4>
+        <div class="hidden-elements">
+          {% if item.precio == 0 %}
+          <h5>Precio: <span>Free Tour</span></h5>
+          {% else %}
+          <h5>Precio: {{ item.precio/100|number_format(2, '.') }} €</h5>
+          {% endif %}
+          <div class="card-btn">
+            <a
+              href="{{ path('tour', { id: item.id }) }}"
+              class="btn-tertiary-card"
+            >
+              Más información
+            </a>
+            {% if app.user %}
+            <a
+              href="{{ path('show', { id: item.id }) }}"
+              class="btn-primary-card"
+            >
+              Reservar
+            </a>
+            {% else %}
+            <a href="{{ path('app_login') }}" class="btn-primary-card">
+              Reservar
+            </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </article>
+    {% endif %} {% endfor %}
+  </div>
+</div>
+{% endblock %}{% block javascripts %}
+{{ encore_entry_script_tags("menu") }}
+{{ encore_entry_script_tags("cookies") }}
+{# {{ encore_entry_script_tags("avatars") }} #} {% endblock %}

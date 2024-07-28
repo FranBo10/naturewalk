@@ -1,0 +1,72 @@
+{
+  "entrypoints": {
+    "app": {
+      "js": [
+        "/build/runtime.620a04ca.js",
+        "/build/454.5a7ae09f.js",
+        "/build/692.b351c162.js",
+        "/build/809.6ef3b67a.js",
+        "/build/app.e25d5ff6.js"
+      ],
+      "css": [
+        "/build/app.cf179b02.css"
+      ]
+    },
+    "menu": {
+      "js": [
+        "/build/runtime.620a04ca.js",
+        "/build/454.5a7ae09f.js",
+        "/build/menu.11912071.js"
+      ]
+    },
+    "menu2": {
+      "js": [
+        "/build/runtime.620a04ca.js",
+        "/build/454.5a7ae09f.js",
+        "/build/menu2.573be505.js"
+      ]
+    },
+    "avatars": {
+      "js": [
+        "/build/runtime.620a04ca.js",
+        "/build/454.5a7ae09f.js",
+        "/build/692.b351c162.js",
+        "/build/avatars.05e83b91.js"
+      ]
+    },
+    "cookies": {
+      "js": [
+        "/build/runtime.620a04ca.js",
+        "/build/454.5a7ae09f.js",
+        "/build/cookies.b46c58af.js"
+      ]
+    },
+    "valoraciones": {
+      "js": [
+        "/build/runtime.620a04ca.js",
+        "/build/454.5a7ae09f.js",
+        "/build/809.6ef3b67a.js",
+        "/build/valoraciones.c7ebae71.js"
+      ]
+    },
+    "cuenta": {
+      "js": [
+        "/build/runtime.620a04ca.js",
+        "/build/cuenta.7c3e90cf.js"
+      ]
+    },
+    "calendario": {
+      "js": [
+        "/build/runtime.620a04ca.js",
+        "/build/calendario.855432f0.js"
+      ]
+    },
+    "templates": {
+      "js": [
+        "/build/runtime.620a04ca.js",
+        "/build/454.5a7ae09f.js",
+        "/build/templates.0fdad3a0.js"
+      ]
+    }
+  }
+}

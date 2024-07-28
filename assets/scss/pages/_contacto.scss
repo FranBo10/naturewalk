@@ -1,0 +1,30 @@
+#main-container {
+  color: $color-gray-darken;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
+  transition: all 300ms ease;
+  @media (max-width: 769px) {
+    margin-bottom: 100px;
+  }
+}
+
+.titulo__contacto {
+    font-size: 24px;
+    color: $color-primary !important;
+    text-shadow: 0 0 1px $color-black;
+    padding: $padding 0;
+  
+}
+
+.form-control {
+  font-size: $main-font-size !important;
+}
+
+@include media(phone) {
+  .form-control {
+    font-size: $big-font-size !important;
+  }
+}

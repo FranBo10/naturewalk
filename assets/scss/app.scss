@@ -1,0 +1,26 @@
+
+@import "utils/variables";
+@import "utils/mixins";
+@import "base/fonts";
+@import "base/globals";
+@import "base/utilities";
+@import "components/buttons";
+@import "components/footer";
+@import "components/navigation";
+@import "components/navigation2";
+@import "components/navigation3";
+@import "components/notyf";
+@import "components/modal";
+@import "layout/header";
+@import "layout/carrusel";
+@import "layout/calendario";
+@import "pages/home";
+@import "pages/contacto";
+@import "pages/blog";
+@import "pages/cuenta";
+@import "pages/show";
+@import "pages/login";
+@import "pages/validar_reserva";
+@import "pages/reservas";
+@import "pages/guia";
+@import "~bootstrap/scss/bootstrap";

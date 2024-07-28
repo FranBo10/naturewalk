@@ -1,0 +1,230 @@
+i {
+  margin-right: 0.75rem;
+  color: $color-white;
+}
+
+i:hover {
+  color: $color-black;
+}
+
+li {
+  list-style: none;
+}
+
+button {
+  padding: 5px 10px;
+}
+
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  font-size: $main-font-size;
+  background-color: $color-gray-darker;
+  padding: 1rem 0.5rem;
+  margin-top: auto;
+  a {
+    text-decoration: none;
+    color: $color-white;
+  }
+  a:hover {
+    color: $color-primary;
+  }
+}
+
+.footer_col {
+  font-size: $main-font-size;
+  padding: 2rem;
+  width: 1rem;
+}
+
+.social {
+  margin-bottom: 2rem;
+}
+.social li {
+  margin-bottom: 0.7rem;
+}
+
+.footer-links li {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.footer_col_payment {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.order-tracking {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.1rem;
+}
+
+.order-tracking input {
+  margin: 5px;
+  padding: 0.25rem;
+}
+
+.order-tracking h4 {
+  color: $color-white;
+}
+
+.copyright p {
+  color: $color-white;
+  font-size: $main-font-size;
+  a {
+    color: $color-primary;
+  }
+}
+
+.payment p {
+  margin-bottom: 1rem;
+  text-align: center;
+  color: $color-white;
+  font-size: $medium-font-size;
+}
+.payment ul {
+  display: flex;
+  justify-content: center;
+  i {
+    color: $color-primary;
+  }
+}
+
+@include media(phone) {
+  footer {
+    flex-wrap: wrap;
+    justify-content: center; /* Centrar las columnas */
+    align-items: center; /* Centrar los elementos dentro de las columnas */
+  }
+
+  .footer_col {
+    width: 50%; /* Establecer el ancho de las columnas al 50% */
+  }
+
+  .payment {
+    width: 100%; /* Establecer el ancho de la tercera columna al 100% */
+  }
+
+  footer a {
+    font-size: $small-font-size;
+  }
+
+  .copyright p {
+    font-size: $small-font-size;
+  }
+
+  .payment p {
+    font-size: $small-font-size;
+  }
+}
+
+// footer {
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-around;
+//     background: $color-gray-darken;
+//     color: white;
+
+// }
+
+// .footer-1 {
+//     display: flex;
+//     justify-content: space-between;
+//     width: 100%;
+//     padding: 1rem 0;
+// }
+
+// .redes-sociales__column {
+//     width: 50%;
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     gap: 20px;
+//     padding: $main-font-size;
+
+// }
+// .redes-sociales__elementos{
+//     width: 100%;
+//  display:flex;
+//  justify-content: center;
+//  align-items: center;
+//  gap: 50px;
+//  margin-bottom: 20px;
+//  .izq, .dcha {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     justify-content: center;
+//     gap: 20px
+//  }
+//  img {
+//     border-radius: 50%;
+//  }
+// }
+
+// .redes-sociales-down{
+//     display: flex;
+//     flex-direction: column;
+//     width: 100%;
+//     text-align: center;
+//     .copyright{
+//         display: flex;
+//         justify-content: center;
+//     }
+//     a{
+//         font-size: $main-font-size;
+//         text-decoration: none;
+//     }
+//     p{
+//         font-size: $main-font-size;
+//     }
+
+// }
+
+// .quienes-somos__column {
+//     width: 50%;
+//     display: flex;
+//     flex-direction: row;
+//     align-items: center;
+// }
+
+// .quienes-somos__column h2,
+// .redes-sociales__column h2 {
+//     font-size: $medium-font-size;
+//     margin-bottom: 20px;
+// }
+
+// .column__right-up {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+//     gap: $big-font-size;
+//     font-size: $medium-font-size;
+//     width: 50%;
+//     margin: 10px 0px;
+//     img{
+//         border-radius: 50%;
+//     }
+//     a{
+//         text-decoration: none !important ;
+//         font-size: $main-font-size;
+//     }
+// }
+
+// .column__right-down{
+//     display: flex;
+//     flex-direction: column;
+//     .metodos__pago{
+//         display: flex;
+//         justify-content: space-around;
+//         img{
+//             width: 45px;
+//             height: 45px;
+//         }
+//     }
+// }

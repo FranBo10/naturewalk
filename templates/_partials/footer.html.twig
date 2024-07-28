@@ -1,0 +1,53 @@
+<footer>
+  <div class="footer_col col-md-4 col-6">
+    <div class="social">
+      <ul>
+        <li>
+          <a href=""><i class="bi bi-facebook"></i>Facebook</a>
+        </li>
+        <li>
+          <a href=""><i class="bi bi-instagram"></i>Instagram</a>
+        </li>
+        <li>
+          <a href=""><i class="bi bi-pinterest"></i>Pinterest</a>
+        </li>
+        <li>
+          <a href=""><i class="bi bi-google"></i>Google+</a>
+        </li>
+      </ul>
+    </div>
+    <div class="copyright">
+      <p>Derechos reservados 2023-2024 | <a href="">FreeTourGO</a></p>
+      <a href="">Terminos y condiciones</a>
+    </div>
+  </div>
+  <div class="footer_col col-md-4 col-6">
+    <div class="footer-links">
+      <ul>
+        <li><a href="">Quienes somos ?</a></li>
+        {% for item in tours %} {% if item.isEstado %}
+        <li>
+          <a href="{{ path('show_tour', { id: item.id }) }}">
+            {{ item.titulo }}
+          </a>
+        </li>
+        {% endif %} {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="footer_col_payment col-md-3 col-6">
+    <div class="order-tracking">
+      <h4>Consulte el estado de su reserva</h4>
+      <input type="text" name="name" id="name" placeholder="N°. Reserva" />
+      <input type="email" name="email" placeholder="E-mail" />
+      <button class="btn-primary" type="submit">Consultar</button>
+    </div>
+    <div class="payment">
+      <p>Medio de pago</p>
+      <ul>
+        <li><i class="bi bi-credit-card-2-back-fill"></i></li>
+        <li><i class="bi bi-paypal"></i></li>
+      </ul>
+    </div>
+  </div>
+</footer>

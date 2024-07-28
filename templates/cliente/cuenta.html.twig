@@ -1,0 +1,156 @@
+{% extends 'base.html.twig' %} {% block title %}Mi cuenta{% endblock %} {% block
+header %} {% include '_partials/_menu2_nav.html.twig' %} {% endblock %} {% block
+body %}
+
+<div id="main-container" class="container my-5">
+  {% for message in app.flashes('success') %}
+  <div class="alert alert-success text-center w-50 mx-auto my-2">
+    <p>{{ message }}</p>
+  </div>
+  {% endfor %}
+  <h2 class="titulo__cuenta text-center w-100 mb-3">Mi cuenta</h2>
+  <div class="cuenta-container">
+    <div class="cuenta-elementos">
+      <div class="cuenta-imagen">
+        <img
+          src="{{ asset('uploads/images/avatars/' ~ app.user.avatar ~ '.jpg') }}"
+          alt="{{ app.user.avatar }}"
+        />
+      </div>
+      <div class="cuenta-detalles">
+        <ul>
+          <li>
+            {{ app.user.nombre | upper }} {{ app.user.apellidos | upper }}
+          </li>
+          <li>Telefono: {{ app.user.telefono }}</li>
+          <li>E-mail: {{ app.user.email }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="datos_perso-container" id="datos-personales">
+    <div class="datos_perso-elementos">
+      <span id="toggleForm"> Datos personales </span>
+      <i class="fas fa-plus"></i>
+    </div>
+    <div class="perso_form-container">
+      {{ form_start(userForm, {'attr': {'id': 'formulario'}}) }}
+
+      <div class="perso-form row mx-3">
+        <div class="col-md-6">
+          {{
+            form_row(userForm.nombre, {
+              label_attr: {
+                style: "font-size: 1.5rem"
+              }
+            })
+          }}
+        </div>
+        <div class="col-md-6">
+          {{
+            form_row(userForm.apellidos, {
+              label_attr: {
+                style: "font-size: 1.5rem"
+              }
+            })
+          }}
+        </div>
+        <div class="col-md-6">
+          {{
+            form_row(userForm.email, {
+              label_attr: {
+                style: "font-size: 1.5rem"
+              }
+            })
+          }}
+        </div>
+        <div class="col-md-6">
+          {{
+            form_row(userForm.telefono, {
+              label_attr: {
+                style: "font-size: 1.5rem"
+              }
+            })
+          }}
+        </div>
+        {#
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col">
+              {{ form_row(form.plainPassword.first) }}
+            </div>
+            <div class="col">
+              {{ form_row(form.plainPassword.second) }}
+            </div>
+          </div>
+        </div>
+        #}
+        <div class="col-md-6">
+          {{ form_row(userForm.pais) }}
+        </div>
+
+        <div class="col-md-6">
+          <div class="selectbox form-group col-md-12 mb-2">
+            <div class="select">
+              <div class="select-content">
+                <img
+                  class="selectedImage"
+                  src="{{ asset('uploads/images/avatars/' ~ app.user.avatar ~ '.jpg') }}"
+                  alt="{{ app.user.avatar }}"
+                  width="60"
+                  height="60"
+                />
+                <div class="description">
+                  <p>Elija su avatar preferido</p>
+                  <i class="bi bi-chevron-down"></i>
+                </div>
+              </div>
+            </div>
+            <div class="options active">
+              {% for avatar in avatars %} {% set imagePath =
+              asset('uploads/images/avatars/' ~ avatar ~ '.jpg') %}
+              <a href="#" class="option selectAvatar">
+                <div class="option-content">
+                  <div class="images">
+                    <img
+                      src="{{ imagePath }}"
+                      alt="{{ avatar }}"
+                      width="60"
+                      height="60"
+                    />
+                  </div>
+                </div>
+              </a>
+              {% endfor %}
+            </div>
+            <input type="hidden" name="avatar" class="avatarInput" />
+          </div>
+        </div>
+        <div class="container">
+          <button type="submit" class="btn-primary col-md-12 my-3">
+            Validar cambios
+          </button>
+        </div>
+      </div>
+      {{ form_end(userForm) }}
+    </div>
+  </div>
+
+  {#
+  <div class="datos_factu-container">
+    <div class="datos_factu-elementos">
+      <button>
+        Datos facturacion
+        <i class="fas fa-plus"></i>
+      </button>
+    </div>
+  </div>
+  #}
+</div>
+{# {% include 'app/_side_menu.html.twig' %} #} {% endblock %} {% block
+javascripts %}
+{{ encore_entry_script_tags("menu2") }}
+{{ encore_entry_script_tags("avatars") }}
+{{ encore_entry_script_tags("cuenta") }}
+
+{% endblock %}

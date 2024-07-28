@@ -1,0 +1,111 @@
+.reservas {
+  background-color: $color-gray-light;
+  height: 100%;
+  width: 100%;
+}
+
+.titulo__reservas {
+  font-size: 24px;
+  color: $color-primary !important;
+  text-shadow: 0 0 1px $color-black;
+  padding: $padding 0;
+
+}
+
+
+// .titulo__reservas h2 {
+//   margin-bottom: 1rem;
+//   margin-bottom: 1px solid $color-black;
+// }
+
+.cards__reservas {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px; /* Añadir espaciado entre las tarjetas */
+  width: 100%;
+  padding: 0 2rem; /* Ajustar el espaciado horizontal */
+  margin: 0 auto; /* Centrar los contenedores en el medio */
+  font-size: $main-font-size; /* Tamaño de fuente relativo */
+  height: auto; /* Altura automática para adaptarse al contenido */
+  
+}
+
+.card__reservas {
+  @include flexCenter(row);
+  border: 1px solid $color-primary;
+  padding: $padding;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  color: $color-gray-darker; 
+  overflow: hidden;
+  @include media(smartPhone) {
+    @include flexCenter(column);
+
+  }
+}
+
+.card__reservas:hover {
+  transform: scale(1.02);
+}
+
+.card__reservas img {
+  max-width: 50%;
+  height: 200px;  
+  @include media(smartPhone) {
+    max-width: 100%;
+    
+  }
+}
+
+.reservas-detalles {  
+  padding: 10px 15px;
+
+  h4{
+    font-weight: bold;
+    text-align: center;
+
+  }
+}
+
+
+.reservas-detalles ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  list-style: none;  
+  gap: 10px;
+}
+
+.reservas-detalles ul li {
+  margin: 0;
+  font-size: $medium-font-size;
+}
+
+.reservas-detalles p {
+  margin: 5px 0;
+  font-size: $main-font-size;
+}
+
+@include media(tablet) {
+  .cards__reservas {
+    grid-template-columns: 1fr; /* Cambia a una tarjeta por fila en pantallas pequeñas */
+  } 
+  
+  .card__reservas {
+    margin: auto;
+    width: 90%;
+  }
+}
+
+@include media(phone) {
+  .cards__reservas {
+    grid-template-columns: 1fr; /* Cambia a una tarjeta por fila en pantallas pequeñas */
+  } 
+  
+  .card__reservas {
+    margin: auto;
+    width: 100%;
+  }
+}

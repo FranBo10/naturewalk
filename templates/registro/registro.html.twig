@@ -1,0 +1,86 @@
+<div class="d-flex justify-content-between align-items-center w-100">
+  <h1 class="text-center h3 my-3 pb-3 border-bottom border-dark flex-grow-1">
+    Inscripción
+  </h1>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="modal"
+    aria-label="Close"
+  ></button>
+</div>
+
+<div class="container">
+  {{ form_start(registrationForm, { action: path("registro_tratar") }) }}
+  <div class="form-registration row mx-3">
+    <div class="col-md-6">
+      {{ form_row(registrationForm.nombre) }}
+    </div>
+    <div class="col-md-6">
+      {{ form_row(registrationForm.apellidos) }}
+    </div>
+    <div class="col-md-6">
+      {{ form_row(registrationForm.email) }}
+    </div>
+    <div class="col-md-6">
+      {{ form_row(registrationForm.telefono) }}
+    </div>
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col">
+          {{ form_row(registrationForm.plainPassword.first) }}
+        </div>
+        <div class="col">
+          {{ form_row(registrationForm.plainPassword.second) }}
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      {{ form_row(registrationForm.pais) }}
+    </div>
+    <div class="col-md-6">
+      <div class="selectbox form-group col-lg-12 mb-2">
+        <div class="select">
+          <div class="select-content">
+            <img class="selectedImage" src="{{
+              asset("uploads/images/avatars/avatar_default.jpg")
+            }}" alt="Avatar" width="60" height="60" />
+            <div class="description">
+              <p>Elija su avatar preferido</p>
+              <i class="bi bi-chevron-down"></i>
+            </div>
+          </div>
+        </div>
+        <div class="options active">
+          {% for avatar in avatars %} {% set imagePath =
+          asset('uploads/images/avatars/' ~ avatar ~ '.jpg') %}
+          <a href="#" class="option selectAvatar">
+            <div class="option-content">
+              <div class="images">
+                <img
+                  src="{{ imagePath }}"
+                  alt="{{ avatar }}"
+                  width="60"
+                  height="60"
+                />
+              </div>
+            </div>
+          </a>
+          {% endfor %}
+        </div>
+
+        <input type="hidden" name="avatar" class="avatarInput" />
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn-primary col-md-12 my-3 mx-auto">
+    Inscríbete
+  </button>
+  {{ form_end(registrationForm) }}
+  <div class="menu__buttons">
+    <p>
+      Ya estas registrado?
+      <a href="{{ path('app_login') }}">Haz click aqui para conectarte</a>
+    </p>
+  </div>
+</div>

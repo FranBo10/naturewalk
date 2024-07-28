@@ -1,0 +1,18 @@
+.form-control {
+  font-size: $main-font-size !important;
+}
+
+.menu__buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  a {
+    color: $color-primary;
+  }
+}
+
+@include media(phone) {
+  .form-control {
+    font-size: $big-font-size !important;
+  }
+}

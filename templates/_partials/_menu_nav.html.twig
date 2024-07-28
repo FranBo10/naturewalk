@@ -1,0 +1,291 @@
+<header id="navigation" class="navigation">
+  <div class="logo">
+    <a href="{{ path('home') }}">Nature<span class="logoNombre">Walk</span></a>
+  </div>
+  <nav class="elementos">
+    <ul>
+      <li>
+        <a href="{{ path('home') }}">Home</a>
+      </li>
+      <li>
+        {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('admin') }}">ADMIN</a>
+        {% endif %}
+      </li>
+      <li>
+        {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_GUIA') %}
+        <a href="{{ path('guia') }}">GUIA</a>
+        {% endif %}
+      </li>
+      <li>
+        <a href="{{ path('blog', { id: categoria.id }) }}">Blog</a>
+      </li>
+      <li>
+        <a href="{{ path('contacto') }}">Contacto</a>
+      </li>
+      {% if app.user %}
+      <li>
+        <div class="icon-nav">
+          <img
+            class="rounded-circle"
+            src="{{ asset('uploads/images/avatars/' ~ app.user.avatar ~ '.jpg') }}"
+            alt="avatar"
+            style="width: 40px; height: 40px"
+          />
+          <a class="user__name">{{ app.user.nombre }}</a>
+        </div>
+        <div class="container__user">
+          <ul>
+            <div class="cuenta-reservas">
+              <li>
+                <a href="{{ path('cuenta', { id: app.user.id }) }}"
+                  >Mi cuenta</a
+                >
+                <i class="fas fa-user"></i>
+              </li>
+              <hr />
+              <li>
+                <a href="{{ path('reservas') }}">Reservas</a>
+                <i class="fas fa-clipboard-list"></i>
+              </li>
+              <hr />
+            </div>
+            <li>
+              <a href="{{ path('app_logout') }}" class="btn-danger mx-auto"
+                >Desconexion</a
+              >
+            </li>
+          </ul>
+        </div>
+      </li>
+      {% else %}
+      <li>
+        <a>
+          <i class="fa fa-user text-white me-5"></i>
+        </a>
+        <ul class="not-user">
+          <div class="container">
+            <form method="post" action="{{ path('app_login') }}">
+              <div class="titulo-login">
+                <h3>Conexión</h3>
+              </div>
+              <div class="form-login">
+                <input
+                  type="email"
+                  name="email"
+                  id="inputEmail"
+                  placeholder="E-Mail"
+                  class="form-control"
+                  autocomplete="off"
+                  required
+                  autofocus
+                />
+                <input
+                  type="password"
+                  name="password"
+                  id="inputPassword"
+                  placeholder="Contraseña"
+                  class="form-control"
+                  autocomplete="current-password"
+                  required
+                />
+                <input
+                  type="hidden"
+                  name="_csrf_token"
+                  value="{{ csrf_token('authenticate') }}"
+                />
+                <div class="under-login">
+                  <div class="checkbox-login">
+                    <label>
+                      <input type="checkbox" name="_remember_me" />
+                      Recuérdame
+                    </label>
+                    <small>
+                      <a href="{{ path('app_forgot_password_request') }}"
+                        >He olvidado mi contraseña</a
+                      >
+                    </small>
+                  </div>
+                  <div class="button-login">
+                    <button class="btn-primary" type="submit">
+                      Iniciar sesión
+                    </button>
+                    <a>No tienes cuenta ?</a>
+                    <a
+                      href="#"
+                      data-bs-toggle="modal"
+                      data-bs-target="#registro"
+                      >Registrate aqui</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </ul>
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
+  <div class="menu-btn">
+    <i class="fa fa-bars"></i>
+  </div>
+  <div class="close-btn">
+    <i class="fa fa-times"></i>
+  </div>
+  <div class="menu-mobile">
+    <ul class="menu-items">
+      {% if app.user %}
+      <li class="item">
+        <div class="profile">
+          <div class="image">
+            <img
+              src="{{ asset('uploads/images/avatars/' ~ app.user.avatar ~ '.jpg') }}"
+              alt="avatar"
+            />
+          </div>
+          <div class="name">
+            <span>{{ app.user.nombre }}</span>
+          </div>
+        </div>       
+      </li> 
+      <div class="item-separator"></div>
+      <li class="item">
+        <a href="{{ path('home') }}">
+          <div class="icon">
+            <i class="fas fa-home"></i>
+          </div>
+          <div class="title">In<span>icio</span></div>
+        </a>
+      </li>
+      {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_GUIA') %}
+      {# <div class="item-separator"></div> #}
+      <li class="item">
+        <a href="{{ path('admin') }}">
+          <div class="icon">
+            <i class="fas fa-user"></i>
+          </div>
+          <div class="title">Ad<span>min</span></div>
+        </a>
+      </li>
+      {# <div class="item-separator"></div> #}
+      <li class="item">
+        <a href="{{ path('guia') }}">
+          <div class="icon">
+            <i class="fas fa-flag"></i>
+          </div>
+          <div class="title">Gu<span>ia</span></div>
+        </a>
+      </li>
+      {% endif %}
+      {# <div class="item-separator"></div> #}
+      <li class="item">
+        <a href="{{ path('blog', { id: categoria.id }) }}">
+          <div class="icon">
+            <i class="fas fa-book"></i>
+          </div>
+          <div class="title">Bl<span>og</span></div>
+        </a>
+      </li>
+      {# <div class="item-separator"></div> #}
+      <li class="item">
+        <a href="{{ path('contacto') }}">
+          <div class="icon">
+            <i class="fas fa-comments"></i>
+          </div>
+          <div class="title">Con<span>tacto</span></div>
+        </a>
+      </li>
+      {# <div class="item-separator"></div> #}
+      <li class="item">
+        <a href="{{ path('cuenta', { id: app.user.id }) }}">
+          <div class="icon">
+            <i class="fas fa-fingerprint"></i>
+          </div>
+          <div class="title">Mi cu<span>enta</span></div>
+        </a>
+      </li>
+      {# <div class="item-separator"></div> #}
+      <li class="item">
+        <a href="{{ path('reservas') }}">
+          <div class="icon">
+            <i class="fas fa-clipboard-list"></i>
+          </div>
+          <div class="title">Res<span>ervas</span></div>
+        </a>
+      </li>
+      {# <div class="item-separator"></div> #}
+      <li class="item">
+        <a href="{{ path('app_logout') }}">
+          <div class="icon"><i class="fas fa-globe"></i></div>
+          <div class="title">Desc<span>onexion</span></div>
+        </a>
+      </li>
+      {% else %}
+      <li class="item">
+        <a href="{{ path('home') }}">
+          <div class="icon"><i class="fas fa-home"></i></div>
+          <div class="title">In<span>icio</span></div>
+        </a>
+      </li>
+      {# <div class="item-separator"></div> #}
+      <li class="item">
+        <a href="{{ path('blog', { id: categoria.id }) }}">
+          <div class="icon"><i class="fas fa-book"></i></div>
+          <div class="title">Bl<span>og</span></div>
+        </a>
+      </li>
+      {# <div class="item-separator"></div> #}
+      <li class="item">
+        <a href="{{ path('contacto') }}">
+          <div class="icon"><i class="fas fa-book"></i></div>
+          <div class="title">Co<span>ntacto</span></div>
+        </a>
+      </li>
+      {# <div class="item-separator"></div> #}
+      <li class="item">
+        <a href="{{ path('app_login') }}">
+          <div class="icon"><i class="fas fa-user"></i></div>
+          <div class="title">Lo<span>gin</span></div>
+        </a>
+      </li>
+      {# <div class="item-separator"></div> #}
+      <li class="item">
+        <a href="{{ path('registro_tratar') }}">
+          <div class="icon"><i class="fas fa-clipboard"></i></div>
+          <div class="title">Re<span>gistrate</span></div>
+        </a>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+  <div
+    class="modal fade"
+    id="registro"
+    tabindex="-1"
+    aria-labelledby="inscriptionLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div
+          class="modal-body border border-primary rounded m-0 p-2 text-black"
+        >
+          <div class="p-3">
+            {{
+              render(
+                controller(
+                  "App\\Controller\\RegistrationController::agregarRegistro"
+                )
+              )
+            }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+{% block javascripts %}
+{{ encore_entry_script_tags("menu") }}
+{{ encore_entry_script_tags("avatars") }}
+{% endblock %}

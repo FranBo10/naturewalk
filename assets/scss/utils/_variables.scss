@@ -1,0 +1,69 @@
+//COLORES
+
+$color-primary: #009407;
+$color-primary-dark: darken($color-primary, 10%);
+$color-primary-darker: darken($color-primary, 20%);
+$color-primary-light: lighten($color-primary, 10%);
+$color-primary-lighter: lighten($color-primary, 20%);
+
+$color-secondary: #798889;
+$color-secondary-dark: darken($color-secondary, 10%);
+$color-secondary-darker: darken($color-secondary, 20%);
+$color-secondary-light: lighten($color-secondary, 10%);
+$color-secondary-lighter: lighten($color-secondary, 20%);
+
+$color-tertiary: #008D94;
+$color-tertiary-dark: darken($color-tertiary, 10%);
+$color-tertiary-darker: darken($color-tertiary, 20%);
+$color-tertiary-light: lighten($color-tertiary, 10%);
+$color-tertiary-lighter: lighten($color-tertiary, 20%);
+
+$color-danger: #db3f34;
+$color-danger-dark: darken($color-danger, 10%);
+$color-danger-darker: darken($color-danger, 20%);
+$color-danger-light: lighten($color-danger, 10%);
+$color-danger-lighter: lighten($color-danger, 20%);
+
+$color-warning: #DEAF16;
+$color-warning-dark: darken($color-warning, 10%);
+$color-warning-darker: darken($color-warning, 20%);
+$color-warning-light: lighten($color-warning, 10%);
+$color-warning-lighter: lighten($color-warning, 20%);
+
+$color-success: #510094;
+$color-success-dark: darken($color-success, 10%);
+$color-success-darker: darken($color-success, 20%);
+$color-success-light: lighten($color-success, 10%);
+$color-success-lighter: lighten($color-success, 20%);
+
+$color-black: #000;
+$color-white: #fff;
+
+$color-gray-light: #f4f4f4;
+$color-gray-dark: #798889;
+$color-gray-darker: #4f4f4f;
+$color-gray-darken: #202020;
+
+//TIPOGRAFIA
+
+$minimal-font-size: 1rem;
+$small-font-size: 1.2em;
+$main-font-size: 1.6rem;
+$medium-font-size: 1.8rem;
+$big-font-size: 2rem;
+$huge-font-size: 4rem;
+$font-h1: 3rem;
+$font-h2: 2.4rem;
+$font-h3: 2rem;
+
+//GRID
+
+$grid-width: 114rem;
+$gutter-vertical: 8rem;
+$gutter-vertical-small: 6rem;
+$gutter-horizontal: 6rem;
+
+//POSICIONAMIENTO ELEMENTOS
+
+$padding: 1rem;
+$border-radius: 0.5rem;

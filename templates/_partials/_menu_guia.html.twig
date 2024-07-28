@@ -1,0 +1,204 @@
+<header id="navigation-3">
+  <div class="logo-2">
+    <a href="{{ path('home') }}">Comm<span>unity</span></a>
+  </div>
+  {% if is_granted('ROLE_GUIA') %}
+  <nav>
+    <ul>
+      <li>
+        <a href="#">MIS RESERVAS</a>
+        {% endif %}
+      </li>
+      {% if app.user %}
+      <li>
+        <div class="icon-nav-2">
+          <img
+            class="rounded-circle"
+            src="{{ asset('uploads/images/avatars/' ~ app.user.avatar ~ '.jpg') }}"
+            alt=""
+            style="width: 45px; height: 45px"
+          />
+          <a>{{ app.user.nombre }}</a>
+        </div>
+      </li>
+      <li>
+        {% if app.user %}
+        <a href="{{ path('app_logout') }}" class="btn-user_nav mx-auto"
+          >Desconexion</a
+        >
+      </li>
+      {% else %}
+      <li>
+        <a>
+          <i class="fa fa-user text-white"></i>
+        </a>
+        <ul class="not-user">
+          <div class="container text-black">
+            <form method="post" action="{{ path('app_login') }}">
+              <div class="titulo-login">
+                <h4>Mi cuenta</h4>
+                <h5>Ya tienes cuenta? Accede a tu panel de usuario</h5>
+              </div>
+              <div class="form-login">
+                <input
+                  type="email"
+                  name="email"
+                  id="inputEmail"
+                  placeholder="E-Mail"
+                  class="form-control"
+                  autocomplete="off"
+                  required
+                  autofocus
+                />
+                <input
+                  type="password"
+                  name="password"
+                  id="inputPassword"
+                  placeholder="Contraseña"
+                  class="form-control"
+                  autocomplete="current-password"
+                  required
+                />
+                <input
+                  type="hidden"
+                  name="_csrf_token"
+                  value="{{ csrf_token('authenticate') }}"
+                />
+                <div class="under-login">
+                  <div class="checkbox-login">
+                    <label>
+                      <input type="checkbox" name="_remember_me" />
+                      Recuérdame
+                    </label>
+                    <small><a href="#">He olvidado mi contraseña</a></small>
+                  </div>
+                  <div class="button-login">
+                    <button class="btn-primary" type="submit">
+                      Iniciar sesión
+                    </button>
+                    <h5>No tienes cuenta ?</h5>
+                    <span
+                      ><a
+                        href="#"
+                        data-bs-toggle="modal"
+                        data-bs-target="#registro"
+                        >Registrate aqui</a
+                      ></span
+                    >
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </ul>
+      </li>
+      {% endif %}
+    </ul>
+    <div class="menu-btn">
+      <i class="fa fa-bars"></i>
+    </div>
+    <div class="close-btn">
+      <i class="fa fa-times"></i>
+    </div>
+    <div class="menu-mobile">
+      {% if app.user %}
+      <div class="profile">
+        <div class="image">
+          <img
+            src="{{ asset('uploads/images/avatars/' ~ app.user.avatar ~ '.jpg') }}"
+            alt="{{ app.user.avatar }}"
+          />
+        </div>
+        <div class="name">
+          <span>{{ app.user.nombre | title }}</span>
+        </div>
+      </div>
+      {% endif %}
+      <div class="menu-items">
+        <ul>
+          <li>
+            <div class="item">
+              <a href="{{ path('home') }}">
+                <div class="icon">
+                  <i class="fas fa-flag-checkered"></i>
+                </div>
+                <div class="title">Ho<span>me</span></div>
+              </a>
+            </div>
+          </li>
+
+          <div class="item-separator"></div>
+
+          <li>
+            <div class="item">
+              <a href="{{ path('contacto') }}">
+                <div class="icon"><i class="fas fa-comments"></i></div>
+                <div class="title">Mis Rese<span>rvas</span></div>
+              </a>
+            </div>
+          </li>
+
+          <div class="item-separator"></div>
+
+          <li>
+            <div class="item">
+              <a href="{{ path('app_logout') }}">
+                <div class="icon"><i class="fas fa-globe"></i></div>
+                <div class="title">Desc<span>onexion</span></div>
+              </a>
+            </div>
+          </li>
+
+          {% else %}
+          <li>
+            <div class="item">
+              <a href="{{ path('app_login') }}">
+                <div class="icon"><i class="fas fa-user"></i></div>
+                <div class="title">Lo<span>gin</span></div>
+              </a>
+            </div>
+          </li>
+
+          <div class="item-separator"></div>
+
+          <li>
+            <div class="item">
+              <a href="{{ path('registro') }}">
+                <div class="icon"><i class="fas fa-clipboard"></i></div>
+                <div class="title">Regi<span>strate</span></div>
+              </a>
+            </div>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+    <div
+      class="modal fade"
+      id="registro"
+      tabindex="-1"
+      aria-labelledby="inscriptionLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div
+            class="modal-body border border-primary rounded m-0 p-2 text-black overflow-hidden"
+          >
+            <div class="p-3">
+              {{
+                render(
+                  controller("App\\Controller\\RegistrationController::tratarRegistro")
+                )
+              }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+{#
+<script src="{{ asset('assets/_guia.js') }}"></script>
+#}

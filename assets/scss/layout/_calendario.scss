@@ -1,0 +1,27 @@
+#calendario {
+  width: 100%;
+  margin: auto;
+  a {
+    color: $color-gray-darken !important ;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .fc-toolbar {
+    text-transform: uppercase;
+
+    h2 {
+      color: $color-gray-darken;
+      font-weight: 500;
+    }
+  }
+
+  @include media(smartPhone) {
+    .fc-toolbar {
+      justify-content: space-around;
+    }
+    .fc-toolbar-title {
+      font-size: 1.2rem;
+    }
+  }
+}

@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %} {% block title %} Reservas {% endblock %} {%
+block header %} {% include '_partials/_menu2_nav.html.twig' %} {% endblock %} {%
+block body %}
+<div id="main-container" class="reservas my-5">
+  {% for message in app.flashes('info') %}
+      <div class="alert alert-info text-center w-50 mx-auto my-2">
+        <p>{{ message }}</p>
+      </div>
+      {% endfor %}
+  <h2 class="titulo__reservas text-center w-100 mb-3">Mis reservas</h2>
+
+  {% if app.user.reservas is not empty %}
+  <div class="cards__reservas">
+    {% for reserva in app.user.reservas %} {% for tour in reserva.tours %}
+    <article class="card__reservas">
+      <img src="{{ asset('uploads/images/' ~ tour.imagen) }}" alt="" />
+      <div class="reservas-detalles">
+        <ul>
+          <li><h2>{{ tour.titulo }}</h2></li>
+          {% if reserva.detallesReserva is not null %}
+          <li>
+            Precio: {% if reserva.detallesReserva.totalReserva == 0 %} Free Tour
+            {% else %}
+            {{ reserva.detallesReserva.totalReserva/100|number_format(2, '.') }}
+            € {% endif %}
+          </li>
+          <li>
+            Fecha: {{ reserva.evento.fechaEvento|date("d/m/Y") }}
+          </li>
+          <li>
+            Cantidad de adultos: {{ reserva.detallesReserva.cantidadAdultos }}
+          </li>
+          <li>Cantidad de niños: {{ reserva.detallesReserva.cantidadKids }}</li>
+          <li>
+            <a
+              href="{{ path('editar', { id: reserva.id }) }}"
+              type="button"
+              class="btn-tertiary"
+            >
+              Modificar reserva
+            </a>
+          </li>
+          <li>
+            <a
+              href="{{ path('delete_reserva', { id: reserva.id }) }}"
+              type="button"
+              class="btn-danger"
+            >
+              Suprimir reserva
+            </a>
+          </li>
+          {% else %}
+          <li>Detalles de reserva no disponibles.</li>
+          {% endif %}
+        </ul>
+      </div>
+    </article>
+    {% endfor %} {% endfor %}
+  </div>
+  {% else %}
+  <div class="text-center mt-5">
+    <h4>Te invitamos a realizar tu reserva</h4>
+    <a href="{{ path('home') }}" class="btn-primary">Volver a inicio</a>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,37 @@
+<h1>Hola {{ user.nombre }} ! Tu reserva ha sido modificada correctamente</h1>
+<h2>A continuación podrás ver los detalles de tu nueva reserva modificada :</h2>
+
+<div class="cards__reservas">
+  {% for reserva in app.user.reservas %} {% for tour in reserva.tours %}
+  <article class="card__reservas">
+    <img src="{{ asset('uploads/images/' ~ tour.imagen) }}" alt="" />
+    <div class="reservas-detalles">
+      <h4>{{ tour.titulo }}</h4>
+      <ul>
+        <li>
+          Precio: {% if reserva.detallesReserva.totalReserva == 0 %} Free Tour
+          {% else %}
+          {{ reserva.detallesReserva.totalReserva/100|number_format(2, '.') }}
+          € {% endif %}
+        </li>
+        <li>Fecha: {{ reserva.detallesReserva.fechaEvento|date("d/m/Y") }}</li>
+        <li>
+          Cantidad de adultos: {{ reserva.detallesReserva.cantidadAdultos }}
+        </li>
+        <li>Cantidad de niños: {{ reserva.detallesReserva.cantidadKids }}</li>
+        <li>
+          <a
+            href="{{ path('editar', { id: reserva.id }) }}"
+            type="button"
+            class="btn-tertiary"
+          >
+            Modificar reserva
+          </a>
+        </li>
+      </ul>
+    </div>
+  </article>
+  {% endfor %} {% endfor %}
+</div>
+
+<p>Hasta prontoooo!</p>

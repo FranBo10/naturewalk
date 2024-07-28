@@ -1,0 +1,16 @@
+<h1>Hola {{ user.nombre }} ! Por favor confirma tu e-mail</h1>
+
+<p>
+  Por favor confirme su direccion de e-mail haciendo click en este enlace:
+  <br /><br />
+  Este link expirará en
+  <strong>{{ token_life_time }}</strong>
+  <a
+    href="{{
+      absolute_url(path('account_verify', { token: token, id: user.id }))
+    }}"
+    >Confirmar mi e-mail</a
+  >
+</p>
+
+<p>Hasta pronto!</p>

@@ -1,0 +1,22 @@
+<div class="comentario my-3">
+    <div class="comentario-items">
+      <img
+        class="rounded-circle"
+        src="{{ asset('uploads/images/avatars/' ~ observacionGuia.autor.avatar ~ '.jpg') }}"
+        alt="avatar"
+        style="width: 40px; height: 40px"
+      />
+      <div class="comentario-body">
+        <div class="nombre">
+          <h3>{{ observacionGuia.autor.nombre }} {{ observacionGuia.autor.apellidos }}</h3>
+        </div>
+        <div class="info">          
+          <div class="meta">{{ observacionGuia.fechaRegistro|date("d/m/Y") }}</div>
+        </div>
+        <div class="contenido">
+          <p>{{ observacionGuia.contenido | raw }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  

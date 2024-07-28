@@ -1,0 +1,385 @@
+{% extends 'base.html.twig' %} {% block title %} {% for slider in sliders %}
+{{ slider.titulo }}
+{% endfor %} {% endblock %} {% block nav %} {% include
+'_partials/_menu_nav.html.twig' %} {% endblock %} {% block body %}
+
+<div class="carousel-container">
+  <div
+    id="carouselExampleIndicators"
+    class="carousel slide"
+    data-bs-ride="carousel"
+  >
+    <div class="carousel-inner">
+      {% for slider in sliders %}
+      <div class="carousel-item{% if loop.first %} active{% endif %}">
+        <div
+          class="card-image-slider"
+          style="background-image: linear-gradient(rgba(0, 0, 0, 0.416), transparent), url('{{ asset('uploads/images/' ~ slider.imagen) }}');"
+        >
+          <div class="content-slider">
+            <div class="content-slider-text">
+              <h3 class="animation content-slider-title">
+                {{ slider.titulo }}
+              </h3>
+              <h2 class="animation content-slider-subtitle">
+                {{ tour.titulo }}
+              </h2>
+            </div>
+            <div class="content-slider-button">
+              <a href="{{ path('show', { id: tour.id }) }}" class="btn-primary"
+                >Reservar</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+
+<div class="container">
+  {% for message in app.flashes('success') %}
+  <div class="alert alert-success text-center w-50 mx-auto my-2">
+    <p>{{ message }}</p>
+  </div>
+  {% endfor %}
+</div>
+
+<div class="menu__detalle-tour">
+  <div class="detalle-tour">
+    <ul>
+      <li>
+        <a href="#descripcion" id="selected">Descripcion</a>
+      </li>
+      <li><a href="#precio">Precios</a></li>
+      <li><a href="#detalles">Detalles</a></li>
+      <li><a href="#cancelacion">Cancelaciones</a></li>
+      <li><a href="#encuentro">Punto de encuentro</a></li>
+      <li><a href="#opiniones">Opiniones</a></li>
+    </ul>
+  </div>
+</div>
+
+<div id="container-detalles">
+  <div id="descripcion" class="container-detalles">
+    <h3>{{ tour.titulo }}</h3>
+    <div class="detalle-descripcion">
+      <p>{{ tour.descripcionCorta | raw }}</p>
+      <div class="descripcion-hidden">
+        <p>{{ tour.descripcionLarga | raw }}</p>
+      </div>
+      <div class="descripcion-container">
+        <a href="#" id="mostrar-link" class="btn-description"
+          >Ver descripción completa</a
+        >
+      </div>
+      <a href="#" id="ocultar-link" class="descripcion-hidden"
+        >Ocultar descripción</a
+      >
+    </div>
+    <hr />
+    <div id="precio" class="detalle-precio">
+      <h3>Precio</h3>
+      <p>
+        Los free tours no tienen un precio fijo. Cada persona valora la labor
+        del guía y, al finalizar el tour, entrega el importe que considere a su
+        voluntad en función de su satisfacción.
+      </p>
+    </div>
+    <hr />
+    <div id="detalles" class="detalle-general">
+      <h3>Detalles</h3>
+      <div>
+        <div class="detalle-duracion">
+          <div class="detalle-titulo">
+            <i class="fas fa-clock"></i>
+            <h4>Duración</h4>
+          </div>
+          <p>1h 30m - 2h</p>
+        </div>
+        <hr />
+        <div class="detalle-idioma">
+          <div class="detalle-titulo">
+            <i class="fas fa-comment"></i>
+            <h4>Idioma</h4>
+          </div>
+          <p>La actividad se realiza con un guia que habla español</p>
+        </div>
+
+        <hr />
+        <div class="detalle-incluido">
+          <div class="detalle-titulo">
+            <i class="fas fa-check"></i>
+            <h4>Incluido</h4>
+          </div>
+          <p>Guia en español</p>
+        </div>
+        <hr />
+        <div class="detalle-noincluido">
+          <div class="detalle-titulo">
+            <i class="fas fa-ban"></i>
+            <h4>No incluido</h4>
+          </div>
+          <p>Propinas</p>
+        </div>
+        <hr />
+        <div class="detalle-reservar">
+          <div class="detalle-titulo">
+            <i class="fas fa-calendar"></i>
+            <h4>Cuando reservar</h4>
+          </div>
+          <p>Puedes reservar hasta 30 minutos antes de que comience el tour</p>
+        </div>
+        <hr />
+        <div class="detalle-accesibilidad">
+          <div class="detalle-titulo">
+            <i class="fas fa-wheelchair"></i>
+            <h4>Accesibilidad</h4>
+          </div>
+          <p>No es accesible en silla de ruedas</p>
+        </div>
+        <hr />
+        <div class="detalle-mascotas">
+          <div class="detalle-titulo">
+            <i class="fas fa-paw"></i>
+            <h4>Mascotas</h4>
+          </div>
+          <p>Permitidas</p>
+        </div>
+        <hr />
+        <div class="detalle-faq">
+          <div class="detalle-titulo">
+            <i class="fas fa-question"></i>
+            <h4>Preguntas frecuentes</h4>
+          </div>
+        </div>
+        <div class="detalle-faq-2">
+          <ul>
+            <li>
+              <p><strong>Como hacer la reserva?</strong></p>
+              <p>
+                Para reservar el tour de <b>{{ tour.titulo }}</b
+                >, elige la fecha deseada y completa el formulario, indicando el
+                numero de participantes. La confirmacion es inmediata.
+              </p>
+            </li>
+            <li>
+              <p>
+                <strong>Se necesita un numero minimo de participantes?</strong>
+              </p>
+              <p>
+                El numero minimo de participantes es de una persona, asi que si
+                es tu caso apuntate y disfruta de un rato agradable
+              </p>
+            </li>
+            <li>
+              <p>
+                Para cualquier otra duda, {#
+                <a href="{{ path('contacto') }}">contacta con nosotros</a> #}
+              </p>
+            </li>
+          </ul>
+        </div>
+        <hr />
+        <div id="cancelacion" class="detalle-cancelacion">
+          <h3 class="titulo-cancelacion">Cancelacion gratuita</h3>
+          <p>
+            Si no vas a poder asistir al tour, por favor, cancela la reserva, si
+            no, el guía te estará esperando.
+          </p>
+        </div>
+        <hr />
+        <div id="encuentro" class="detalle-encuentro">
+          <div class="ubicacion">
+            <div class="detalle-location">
+              <div class="meeting-point">
+                <h3>Punto de encuentro</h3>
+              </div>
+              <div class="titulo-ubicacion">
+                <i class="fas fa-map-marker-alt"></i>
+                <p>{{ tour.comienzo }}</p>
+              </div>
+              <div class="mapa">
+                <iframe
+                  src="{{ tour.mapaComienzo }}"
+                  width="400"
+                  height="300"
+                  style="border: 0"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+            </div>
+            <div class="detalle-location">
+              <div class="meeting-point">
+                <h3>Segundo punto de encuentro</h3>
+              </div>
+              <div class="titulo-ubicacion">
+                <i class="fas fa-map-marker-alt"></i>
+                <p>{{ tour.final }}</p>
+              </div>
+              <div class="mapa">
+                <iframe
+                  src="{{ tour.mapaFinal }}"
+                  width="400"
+                  height="300"
+                  style="border: 0"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% for item in tours %} {% if item.id == tour.id %}
+        <div id="opiniones" class="container-detalles-reserva my-3">
+          {% if app.user %}
+          <a href="{{ path('show', { id: item.id }) }}" class="btn-primary">
+            Reservar
+          </a>
+          {% else %}
+          <a href="{{ path('app_login') }}" class="btn-primary-card">
+            Reservar
+          </a>
+          {% endif %}
+        </div>
+        {% endif %} {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<hr />
+
+<div class="container-detalles mb-5">
+  <div class="titulo__comentarios my-3">
+    <h2>Opiniones de nuestro clientes</h2>
+    <h4>
+      Todas las opiniones han sido escritas por clientes reales que han
+      reservado con nosotros
+    </h4>
+  </div>
+  <div class="comentario-lista">
+    {% for comentario in comentarios %} {% if comentario.isAprobado %} {%
+    include 'componentes/_comentario.html.twig' %} {% endif %} {% endfor %}
+  </div>
+</div>
+
+<div class="container-detalles mb-5">
+  <h2 class="my-5">Déjanos un comentario</h2>
+  {% if app.user %}
+  {{ form_start(form) }}
+
+  {{
+    form_widget(form.contenido, {
+      attr: {
+        class: "form-control",
+        placeholder: "Escribe aquí..."
+      }
+    })
+  }}
+
+  <div class="valoracion">
+    <h3>Déjanos tu valoración</h3>
+    <div class="stars">
+      <i class="lar la-star" data-value="1"></i
+      ><i class="lar la-star" data-value="2"></i
+      ><i class="lar la-star" data-value="3"></i
+      ><i class="lar la-star" data-value="4"></i
+      ><i class="lar la-star" data-value="5"></i>
+      <input type="hidden" name="nota" id="nota" value="0" />
+    </div>
+    {% if form_errors(form.nota) %}
+    <div class="alert alert-danger">{{ form_errors(form.nota) }}</div>
+    {% endif %}
+  </div>
+
+  <button type="submit" id="submit-btn" class="btn-primary my-3">
+    Publicar comentario
+  </button>
+  {{ form_end(form) }}
+  {% else %}
+  <p>Conéctate para dejar tu comentario</p>
+  <a href="{{ path('app_login') }}" class="desconectado"
+    >Haz click aqui para conectarte</a
+  >
+  {% endif %}
+</div>
+
+<div class="servicios">
+  <div class="titulo__servicios">
+    <h2 class="mb-3">También te puede interesar</h2>
+  </div>
+  <div class="cards">
+    {% for item in tours %} {% if item.isEstado %} {% if item.id != tour.id %}
+    <article class="card">
+      <img src="{{ asset("uploads/images/" ~ item.imagen) }}" alt="{{
+        item.titulo
+      }}" />
+      <div class="content card-text">
+        <h4>{{ item.titulo }}</h4>
+        <div class="hidden-elements">
+          {% if item.precio == 0 %}
+          <h5>Precio: <span>Free Tour</span></h5>
+          {% else %}
+          <h5>Precio: {{ item.precio/100|number_format(2, '.') }} €</h5>
+          {% endif %}
+          <div class="card-btn">
+            <a
+              href="{{ path('tour', { id: item.id }) }}"
+              class="btn-tertiary-card"
+            >
+              Más información
+            </a>
+            {% if app.user %}
+            <a
+              href="{{ path('show', { id: item.id }) }}"
+              class="btn-primary-card"
+            >
+              Reservar
+            </a>
+            {% else %}
+            <a href="{{ path('app_login') }}" class="btn-primary-card">
+              Reservar
+            </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </article>
+    {% endif %} {% endif %} {% endfor %}
+  </div>
+</div>
+{#
+<div class="calendar">
+  <img
+    src="{{ asset('uploads/images/montmartre.jpg') }}"
+    alt=""
+    width="250"
+    height="350"
+  />
+</div>
+#} {% endblock %} {% block javascripts %}
+{{ encore_entry_script_tags("templates") }}
+{{ encore_entry_script_tags("valoraciones") }}
+{% endblock %}
