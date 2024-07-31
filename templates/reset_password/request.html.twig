@@ -6,18 +6,18 @@
     <p>{{ flash_error }}</p>
   </div>
   {% endfor %}
-  <h2>Restablecer contraseña</h2>
+  <h2>Reset password</h2>
 
   {{ form_start(requestForm) }}
   {{ form_row(requestForm.email) }}
   <div>
     <small>
-      Introduce tu e-mail y te enviaremos un enlace para restablecer tu
-      contraseña
+      Enter your email and we'll send you a link to reset your
+      password
     </small>
   </div>
 
-  <button class="btn-primary mt-3">Restablecer contraseña</button>
+  <button class="btn-primary mt-3">Reset password</button>
   {{ form_end(requestForm) }}
 </div>
 {% endblock %}

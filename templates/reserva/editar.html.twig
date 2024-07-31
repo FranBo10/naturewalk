@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %} {% block title %}Devis commande{% endblock %} {%
+{% extends 'base.html.twig' %} {% block title %} Edit booking {% endblock %} {%
   block body %}
   <div id="main-container" class="container-fluid my-3">
     {% for message in app.flashes('danger') %}
@@ -11,10 +11,10 @@
         <thead class="table__head">
           <tr>
             <th class="align-middle">Tour</th>
-            <th class="align-middle">Precio</th>
-            <th class="align-middle">Adultos</th>
-            <th class="align-middle">Niños</th>
-            <th class="align-middle">Fecha</th>
+            <th class="align-middle">Price</th>
+            <th class="align-middle">Adults</th>
+            <th class="align-middle">Kids</th>
+            <th class="align-middle">Booking date</th>
             <th></th>
           </tr>
         </thead>
@@ -64,19 +64,19 @@
       <div class="col-6">
         <div class="buttons">
           <a href="{{ path('home') }}" class="btn-secondary me-3">
-            Vaciar el carrito
+            Clear Cart
           </a>
-          <a href="{{ path('home') }}" class="btn-tertiary">Ver más tours</a>
+          <a href="{{ path('home') }}" class="btn-tertiary">More tours...</a>
         </div>
       </div>
       <div class="col-6 text-end">
-        <button type="submit" class="btn-primary me-3">Modificar reserva</button>
+        <button type="submit" class="btn-primary me-3">Modify reservation</button>
         {{ form_end(form) }}
       </div>
     </div>
     <!-- Fin del bloque de formulario de datos personales -->
     {% else %}
-    <p>Tu carrito está vacío</p>
+    <p>No booking registered yet</p>
     {% endif %}
   </div>
   {% endblock %}

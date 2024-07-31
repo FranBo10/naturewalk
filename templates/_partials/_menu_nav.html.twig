@@ -21,7 +21,28 @@
         <a href="{{ path('blog', { id: categoria.id }) }}">Blog</a>
       </li>
       <li>
-        <a href="{{ path('contacto') }}">Contacto</a>
+        <a href="{{ path('contacto') }}">Contact</a>
+      </li>
+      <li class="idioma-nav">
+        <a href="#">{{ 'Language'|trans }}</a>
+        <div class="container__user">
+          <ul>
+            <div class="idiomas">
+              {% set routeParams = app.request.query.all %}
+              {% if app.request.attributes.get('id') is not null %}
+                  {% set routeParams = routeParams|merge({'id': app.request.attributes.get('id')}) %}
+              {% endif %}
+              <li class="idioma">
+                <img src="{{ asset('uploads/images/icons/en.png') }}" alt="en">
+                <a href="{{ path(app.request.attributes.get('_route'), routeParams|merge({'_locale': 'en'})) }}">English</a>              
+              </li>
+              <li class="idioma">
+                <img src="{{ asset('uploads/images/icons/fr.png') }}" alt="fr">
+                <a href="{{ path(app.request.attributes.get('_route'), routeParams|merge({'_locale': 'fr'})) }}">Français</a>              
+              </li>
+            </div>
+          </ul>
+        </div>
       </li>
       {% if app.user %}
       <li>
@@ -39,20 +60,20 @@
             <div class="cuenta-reservas">
               <li>
                 <a href="{{ path('cuenta', { id: app.user.id }) }}"
-                  >Mi cuenta</a
+                  >My Account</a
                 >
                 <i class="fas fa-user"></i>
               </li>
               <hr />
               <li>
-                <a href="{{ path('reservas') }}">Reservas</a>
+                <a href="{{ path('reservas') }}">My Bookings</a>
                 <i class="fas fa-clipboard-list"></i>
               </li>
               <hr />
             </div>
             <li>
               <a href="{{ path('app_logout') }}" class="btn-danger mx-auto"
-                >Desconexion</a
+                >Log out</a
               >
             </li>
           </ul>
@@ -67,7 +88,7 @@
           <div class="container">
             <form method="post" action="{{ path('app_login') }}">
               <div class="titulo-login">
-                <h3>Conexión</h3>
+                <h3>Log in</h3>
               </div>
               <div class="form-login">
                 <input
@@ -98,24 +119,22 @@
                   <div class="checkbox-login">
                     <label>
                       <input type="checkbox" name="_remember_me" />
-                      Recuérdame
+                      Remember me
                     </label>
                     <small>
                       <a href="{{ path('app_forgot_password_request') }}"
-                        >He olvidado mi contraseña</a
+                        >I forgot my password</a
                       >
                     </small>
                   </div>
                   <div class="button-login">
-                    <button class="btn-primary" type="submit">
-                      Iniciar sesión
-                    </button>
-                    <a>No tienes cuenta ?</a>
+                    <button class="btn-primary" type="submit">Log in</button>
+                    <a>Don't have an account?</a>
                     <a
                       href="#"
                       data-bs-toggle="modal"
                       data-bs-target="#registro"
-                      >Registrate aqui</a
+                      >Register here</a
                     >
                   </div>
                 </div>
@@ -147,19 +166,20 @@
           <div class="name">
             <span>{{ app.user.nombre }}</span>
           </div>
-        </div>       
-      </li> 
+        </div>
+      </li>
       <div class="item-separator"></div>
       <li class="item">
         <a href="{{ path('home') }}">
           <div class="icon">
             <i class="fas fa-home"></i>
           </div>
-          <div class="title">In<span>icio</span></div>
+          <div class="title">Ho<span>me</span></div>
         </a>
       </li>
-      {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_GUIA') %}
-      {# <div class="item-separator"></div> #}
+      {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_GUIA') %} {#
+      <div class="item-separator"></div>
+      #}
       <li class="item">
         <a href="{{ path('admin') }}">
           <div class="icon">
@@ -168,7 +188,9 @@
           <div class="title">Ad<span>min</span></div>
         </a>
       </li>
-      {# <div class="item-separator"></div> #}
+      {#
+      <div class="item-separator"></div>
+      #}
       <li class="item">
         <a href="{{ path('guia') }}">
           <div class="icon">
@@ -177,8 +199,9 @@
           <div class="title">Gu<span>ia</span></div>
         </a>
       </li>
-      {% endif %}
-      {# <div class="item-separator"></div> #}
+      {% endif %} {#
+      <div class="item-separator"></div>
+      #}
       <li class="item">
         <a href="{{ path('blog', { id: categoria.id }) }}">
           <div class="icon">
@@ -187,73 +210,110 @@
           <div class="title">Bl<span>og</span></div>
         </a>
       </li>
-      {# <div class="item-separator"></div> #}
+      {#
+      <div class="item-separator"></div>
+      #}
       <li class="item">
         <a href="{{ path('contacto') }}">
           <div class="icon">
             <i class="fas fa-comments"></i>
           </div>
-          <div class="title">Con<span>tacto</span></div>
+          <div class="title">Con<span>tact</span></div>
         </a>
       </li>
-      {# <div class="item-separator"></div> #}
+      <li class="item">
+        <a href="#" class="language-toggle">
+          <div class="icon">
+            <i class="fas fa-language"></i>
+          </div>
+          <div class="title">Lan<span>guage</span> <i class="fas fa-chevron-down chevron-custom"></i></div>
+        </a>
+        <ul class="idioma-submenu language-dropdown">
+          {% set routeParams = app.request.query.all %}
+          {% if app.request.attributes.get('id') is not null %}
+              {% set routeParams = routeParams|merge({'id': app.request.attributes.get('id')}) %}
+          {% endif %}
+          <li>
+              <a class="idioma-link" href="{{ path(app.request.attributes.get('_route'), routeParams|merge({'_locale': 'en'})) }}">
+                  <img src="{{ asset('uploads/images/icons/en.png') }}" alt="en" class="flag-icon"><span class="ms-3">English</span>
+              </a>
+          </li>
+          <li>
+              <a class="idioma-link" href="{{ path(app.request.attributes.get('_route'), routeParams|merge({'_locale': 'fr'})) }}">
+                  <img src="{{ asset('uploads/images/icons/fr.png') }}" alt="fr" class="flag-icon"><span class="ms-3">Français</span>
+              </a>
+          </li>
+        </ul>
+      </li>
       <li class="item">
         <a href="{{ path('cuenta', { id: app.user.id }) }}">
           <div class="icon">
             <i class="fas fa-fingerprint"></i>
           </div>
-          <div class="title">Mi cu<span>enta</span></div>
+          <div class="title">My Acc<span>ount</span></div>
         </a>
       </li>
-      {# <div class="item-separator"></div> #}
+      {#
+      <div class="item-separator"></div>
+      #}
       <li class="item">
         <a href="{{ path('reservas') }}">
           <div class="icon">
             <i class="fas fa-clipboard-list"></i>
           </div>
-          <div class="title">Res<span>ervas</span></div>
+          <div class="title">My Boo<span>kings</span></div>
         </a>
       </li>
-      {# <div class="item-separator"></div> #}
+      {#
+      <div class="item-separator"></div>
+      #}
       <li class="item">
         <a href="{{ path('app_logout') }}">
           <div class="icon"><i class="fas fa-globe"></i></div>
-          <div class="title">Desc<span>onexion</span></div>
+          <div class="title">Lo<span>g Out</span></div>
         </a>
       </li>
       {% else %}
       <li class="item">
         <a href="{{ path('home') }}">
           <div class="icon"><i class="fas fa-home"></i></div>
-          <div class="title">In<span>icio</span></div>
+          <div class="title">Lo<span>g in</span></div>
         </a>
       </li>
-      {# <div class="item-separator"></div> #}
+      {#
+      <div class="item-separator"></div>
+      #}
       <li class="item">
         <a href="{{ path('blog', { id: categoria.id }) }}">
           <div class="icon"><i class="fas fa-book"></i></div>
           <div class="title">Bl<span>og</span></div>
         </a>
       </li>
-      {# <div class="item-separator"></div> #}
+      {#
+      <div class="item-separator"></div>
+      #}
       <li class="item">
         <a href="{{ path('contacto') }}">
           <div class="icon"><i class="fas fa-book"></i></div>
-          <div class="title">Co<span>ntacto</span></div>
+          <div class="title">Co<span>ntact</span></div>
         </a>
       </li>
-      {# <div class="item-separator"></div> #}
+      {#
+      <div class="item-separator"></div>
+      #}
       <li class="item">
         <a href="{{ path('app_login') }}">
           <div class="icon"><i class="fas fa-user"></i></div>
-          <div class="title">Lo<span>gin</span></div>
+          <div class="title">Lo<span>g in</span></div>
         </a>
       </li>
-      {# <div class="item-separator"></div> #}
+      {#
+      <div class="item-separator"></div>
+      #}
       <li class="item">
         <a href="{{ path('registro_tratar') }}">
           <div class="icon"><i class="fas fa-clipboard"></i></div>
-          <div class="title">Re<span>gistrate</span></div>
+          <div class="title">Regi<span>stration</span></div>
         </a>
       </li>
       {% endif %}

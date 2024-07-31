@@ -20,33 +20,42 @@ class UserFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nombre', TextType::class, [
-                'label' => 'Nombre',
-                'constraints' => [
-                    new NotBlank(),
-                    new Length(min: 2)
-                ]
-            ])
-            ->add('apellidos', TextType::class, [
-                'label' => 'Apellidos',
-                'constraints' => [
-                    new NotBlank()
-                ]
-            ])
+        ->add('nombre', TextType::class, [
+            'label' => "Name",
+            'constraints' => [
+                new NotBlank([
+                    'message' => 'Please enter your name',
+                ]),
+                new Length(min: 2)
+            ]
+        ])
+        ->add('apellidos', TextType::class, [
+            'label' => "Last name",
+            'constraints' => [
+                new NotBlank([
+                    'message' => 'Please enter your last name',
+                ])
+            ]
+        ])
             ->add('email', EmailType::class, [
-                'label' => 'E-mail',
-                'constraints' => [
-                    new NotBlank(),
-                    new Email()
+                'label' => "Email",
+                'constraints' => [new NotBlank([
+                    'message' => 'Please enter your email address',
+                ]),
+                new Email([
+                    'message' => 'The e-mail address introduced "{{ value }}" is not valid.',
+                ]),
                 ]
             ])
             ->add('telefono', TelType::class, [
-                'label' => 'Teléfono',
+                'label' => "Phone N°.",
                 'constraints' => [
-                    new NotBlank()
+                    new NotBlank([
+                        'message' => 'Please enter a phone number',
+                    ])
                 ]
             ])
-            ->add('pais', CountryType::class, ['label' => 'País', 'placeholder' => 'Selecciona tu pais'])
+            ->add('pais', CountryType::class, ['label' => 'Country', 'placeholder' => 'Select your country'])
             ->add('avatar', HiddenType::class, [
                 'mapped' => false,
             ]);

@@ -23,6 +23,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -36,11 +37,14 @@ class AppController extends AbstractController
         $this->em = $em;
     }
 
-    #[Route('/', name: 'home')]
-    public function index(TourRepository $repo, BlogCategoriaRepository $blogCategoriaRepository): Response
+    #[Route('/{_locale}', name: 'home')]
+    public function index(TourRepository $repo, BlogCategoriaRepository $blogCategoriaRepository, Request $request): Response
     {
         $tours = $repo->findBy([], ['orden' => 'ASC']);
         $categorias = $blogCategoriaRepository->findAll();
+
+        $locale = $request->getLocale();
+        $request->setLocale($locale);
 
         foreach ($categorias as $categoria) {
             $categoriaId = $categoria->getId();
@@ -51,17 +55,27 @@ class AppController extends AbstractController
         return $this->render('app/index.html.twig', [
             'tours' => $tours,
             'categoria' => $categoria,
+            '_locale' => $locale
         ]);
     }
 
-    #[Route('/tour/{id}', name: 'tour', methods: ['GET', 'POST'])]
-    public function tour($id, TourRepository $repo, ComentarioService $comentarioService, ComentarioRepository $comentarioRepository, Request $request, BlogCategoriaRepository $blogCategoriaRepository): Response
+//     #[Route('/', name: 'default')]
+// public function default(): RedirectResponse
+// {
+//     // Redirigir a la ruta home con el idioma predeterminado
+//     return $this->redirectToRoute('home', ['_locale' => 'en']);
+// }
+
+
+    #[Route('/tour/{id}/{_locale}', name: 'tour', methods: ['GET', 'POST'])]
+    public function tour($id, TourRepository $repo, ComentarioService $comentarioService, ComentarioRepository $comentarioRepository, Request $request, BlogCategoriaRepository $blogCategoriaRepository, TranslatorInterface $translator): Response
     {
 
         $tour = $this->em->getRepository(Tour::class)->find($id);
         $tours = $repo->findAll();
         $user = $this->getUser();
         $categorias = $blogCategoriaRepository->findAll();
+        $locale = $request->getLocale();
 
         foreach ($categorias as $categoria) {
             $categoriaId = $categoria->getId();
@@ -93,9 +107,14 @@ class AppController extends AbstractController
 
             $comentarioService->persistComentario($comentario, $user, $tour);
 
-            $this->addFlash('success', 'Gracias por dar su comentario, a la espera de validación');
+            $mensaje = $translator->trans('Thank you for giving your comment, pending for validation');
 
-            $this->redirectToRoute('tour', ['id' => $tour->getId()]);
+            $this->addFlash('success', $mensaje);
+
+            $this->redirectToRoute('tour', [
+                'id' => $tour->getId(), 
+            '_locale' => $locale
+        ]);
         }
 
         return $this->render('app/tour.html.twig', [
@@ -109,14 +128,14 @@ class AppController extends AbstractController
     }
 
 
-    #[Route('/cuenta/{id}', name: "cuenta")]
+    #[Route('/cuenta/{id}/{_locale}', name: "cuenta")]
     public function miCuenta(
         Request $request,
         TourRepository $repo,
         User $user,
         UserRepository $userRepository,
         SessionInterface $session,
-        BlogCategoriaRepository $blogCategoriaRepository
+        BlogCategoriaRepository $blogCategoriaRepository, TranslatorInterface $translator
     ) {
         $avatars = [];
         for ($i = 1; $i <= 24; $i++) {
@@ -127,6 +146,7 @@ class AppController extends AbstractController
         $tours = $repo->findAll();
 
         $categorias = $blogCategoriaRepository->findAll();
+        $locale = $request->getLocale();
 
         foreach ($categorias as $categoria) {
             $categoriaId = $categoria->getId();
@@ -152,8 +172,11 @@ class AppController extends AbstractController
             $this->em->persist($user);
             $this->em->flush();
 
-            $this->addFlash('success', 'Su cuenta de usuario ha sido modificada');
-            return $this->redirectToRoute('cuenta', ['id' => $user->getId()]);
+            $mensaje = $translator->trans('Your user account has been modified');
+
+            $this->addFlash('success', $mensaje);
+            return $this->redirectToRoute('cuenta', ['id' => $user->getId(), 
+            '_locale' => $locale]);
         }
 
         $selectedAvatar = $session->get('selected_avatar', $avatars[0]);

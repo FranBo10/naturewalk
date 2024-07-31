@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %} {% block title %}Contacto{% endblock %} {% block
+{% extends 'base.html.twig' %} {% block title %} Contact us {% endblock %} {% block
 body %}
 <div id="main-container" class="container my-5">
   {% for message in app.flashes('success') %}
@@ -7,7 +7,7 @@ body %}
   </div>
   {% endfor %}
   <h2 class="titulo__contacto text-center w-100 mb-5">
-    Contacto
+    Contact us
   </h2>
   <div class="container">
     {{ form_start(form, { action: path("contacto") }) }}
@@ -23,7 +23,7 @@ body %}
       </div>
 
       <button type="submit" class="btn-primary col-md-6 mx-auto mt-3">
-        Enviar
+        Send
       </button>
 
       {{ form_end(form) }}

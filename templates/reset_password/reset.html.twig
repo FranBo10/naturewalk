@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %} {% block title %}Reset your password{% endblock
 %} {% block body %}
 <div id="main-container" class="container my-5">
-  <h1>Restablece tu contraseña</h1>
+  <h1>Reset your password</h1>
 
   {{ form_start(resetForm) }}
   {{ form_row(resetForm.plainPassword) }}
-  <button class="btn-primary">Restablecer contraseña</button>
+  <button class="btn-primary">Reset password</button>
   {{ form_end(resetForm) }}
 </div>
 {% endblock %}

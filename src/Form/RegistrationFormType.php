@@ -25,10 +25,10 @@ class RegistrationFormType extends AbstractType
             ->add('email', EmailType::class, [
                 'label' => "Email",
                 'constraints' => [new NotBlank([
-                    'message' => 'Por favor, introduce tu dirección de correo electrónico',
+                    'message' => 'Please enter your email address',
                 ]),
                 new Email([
-                    'message' => 'La dirección de correo electrónico "{{ value }}" no es válida.',
+                    'message' => 'The e-mail address introduced "{{ value }}" is not valid.',
                 ]),
                 ]
             ])
@@ -36,48 +36,48 @@ class RegistrationFormType extends AbstractType
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'type' => PasswordType::class,
-                'first_options' => ['label' => 'Contraseña'],
-                'second_options' => ['label' => 'Confirmar contraseña'],
-                'invalid_message' => 'Las contraseñas no coinciden',
+                'first_options' => ['label' => 'Password'],
+                'second_options' => ['label' => 'Confirm password'],
+                'invalid_message' => "Passwords don't match",
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password'],
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Por favor introduzca una contraseña',
+                        'message' => 'Please enter a password',
                     ]),
                     new Length([
                         'min' => 5,
-                        'minMessage' => 'Su contraseña debe contener al menos {{ limit }} caracteres',
+                        'minMessage' => 'Your password must have at list {{ limit }} characteres',
                         'max' => 4096,
                     ]),
                 ],
             ])
             ->add('nombre', TextType::class, [
-                'label' => "Nombre",
+                'label' => "Name",
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Por favor introduzca su nombre',
+                        'message' => 'Please enter your name',
                     ]),
                     new Length(min: 2)
                 ]
             ])
             ->add('apellidos', TextType::class, [
-                'label' => "Apellidos",
+                'label' => "Last name",
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Por favor introduzca el apellido',
+                        'message' => 'Please enter your last name',
                     ])
                 ]
             ])
             ->add('telefono', TelType::class, [
-                'label' => "Teléfono",
+                'label' => "Phone N°.",
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Por favor introduzca un teléfono',
+                        'message' => 'Please enter a phone number',
                     ])
                 ]
             ])
-            ->add('pais', CountryType::class, ['label' => 'País', 'placeholder' => 'Selecciona tu pais'])
+            ->add('pais', CountryType::class, ['label' => 'Country', 'placeholder' => 'Select your country'])
             ->add('avatar', HiddenType::class, [
                 'mapped' => false,
             ]);

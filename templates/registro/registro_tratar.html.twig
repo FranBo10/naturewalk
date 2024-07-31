@@ -1,10 +1,10 @@
-{% extends 'base.html.twig' %} {% block title %} Registro {% endblock %} {%
+{% extends 'base.html.twig' %} {% block title %} Registration {% endblock %} {%
 block header %} {% include '_partials/_menu2_nav.html.twig' %} {% endblock %} {%
 block body %} {# {% include 'app/_side_menu.html.twig' %} #}
 
 <div id="main-container" class="container mt-3 d-flex justify-content-center">
   <h1 class="text-center col-md-12 h3 my-3 pb-3 border-bottom border-dark">
-    Inscripción
+    Create an account
   </h1>
   <div class="container">
     {{ form_start(registrationForm, { action: path("registro_tratar") }) }}
@@ -42,7 +42,7 @@ block body %} {# {% include 'app/_side_menu.html.twig' %} #}
 
               }}" alt="Avatar" width="70" height="70" />
               <div class="description">
-                <p>Elija su avatar preferido</p>
+                <p>Choose your preferred avatar</p>
                 <i class="bi bi-chevron-down"></i>
               </div>
             </div>
@@ -70,12 +70,12 @@ block body %} {# {% include 'app/_side_menu.html.twig' %} #}
         </div>
       </div>
     </div>
-    <button type="submit" class="btn-primary col-md-12 mb-3">Inscríbete</button>
+    <button type="submit" class="btn-primary col-md-12 mb-3">Register</button>
     {{ form_end(registrationForm) }}
     <div class="menu__buttons">
       <p>
-        Ya estas registrado?
-        <a href="{{ path('app_login') }}">Haz click aqui para conectarte</a>
+        Are you already registered?
+        <a href="{{ path('app_login') }}">Click here to log in</a>
       </p>
     </div>
   </div>

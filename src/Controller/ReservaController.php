@@ -106,7 +106,9 @@ class ReservaController extends AbstractController
 
             if ($fechaReserva < $fechaActual) {
 
-                $this->addFlash('danger', 'La fecha del evento no puede ser anterior a la fecha actual, por favor modifica la fecha de la reserva');
+                $mensaje = $translator->trans('The date of the event cannot be earlier than the current date, please modify the date of the reservation');
+
+                $this->addFlash('danger', $mensaje);
 
                 return $this->redirectToRoute('show', [
                     'id' => $tour->getId()
@@ -115,7 +117,8 @@ class ReservaController extends AbstractController
             
             $evento = $eventoRepository->findOneBy(['tour' => $tour, 'fecha_evento' => new DateTime($fechaReserva)]);
         if ($evento && $evento->isCerrado()) {
-            $this->addFlash('danger', 'El evento está cerrado y no puede recibir más reservas.');
+            $mensaje = $translator->trans('The event is closed and cannot receive further reservations');
+            $this->addFlash('danger', $mensaje);
             return $this->redirectToRoute('show', ['id' => $tour->getId()]);
         }
 
@@ -128,7 +131,10 @@ class ReservaController extends AbstractController
                     foreach ($tours as $tour) {
                         $titulo = $tour->getTitulo();
                         if ($titulos[$titulo] = $tour->getId()) {
-                            $this->addFlash('danger', 'Ups! No tenemos visita este día para este tour, por favor modifica la fecha de reserva');
+
+                            $mensaje = $translator->trans('Ups! We do not have a visit this day for this tour, please modify the booking date');
+
+                            $this->addFlash('danger', $mensaje);
                             return $this->redirectToRoute('show', ['id' => $tour->getId()]);
                         }
                     }
@@ -140,7 +146,10 @@ class ReservaController extends AbstractController
             $reserva->setDetallesReserva($detallesReserva);
 
             if ($detallesReserva->getCantidad() >= $tour->getStock()) {
-                $this->addFlash('danger', 'Se ha alcanzado el número máximo de asistentes por evento.');
+
+                $mensaje = $translator->trans('Sorry! The maximum number of participants for this event has been reached');
+
+                $this->addFlash('danger', $mensaje);
 
                 return $this->redirectToRoute('show', [
                     'id' => $tour->getId()
@@ -158,7 +167,10 @@ class ReservaController extends AbstractController
                 $cantidadRestante = $stock - $cantidadEvento;
 
                 if ($cantidadTotal >= $tour->getStock()) {
-                    $this->addFlash('danger', 'Le informamos que tan solo quedan ' . $cantidadRestante . ' plazas libres para la actividad de hoy');
+
+                    $mensaje = $translator->trans("We inform you that there are only " .  $cantidadRestante . " places left free for today's activity");
+
+                    $this->addFlash('danger', $mensaje);
                     return $this->redirectToRoute('show', ['id' => $tour->getId()]);
                 }
             }
@@ -192,8 +204,9 @@ class ReservaController extends AbstractController
 
             $es->updateEventFromReserva($reserva, $detallesReserva, $tour);
 
+            $mensaje = $translator->trans('Your booking has been confirmed, an e-mail has been sent, please check the spam');
 
-            $this->addFlash('success', 'Su reserva ha sido confirmada, un e-mail ha sido enviado, compruebe el correo no deseado');
+            $this->addFlash('success', $mensaje);
 
             return $this->redirectToRoute('validar_reserva', ['id' => $reserva->getId()]);
         }
@@ -261,7 +274,10 @@ class ReservaController extends AbstractController
             $fechaActual = $fechaActual->format('Y-m-d');
 
             if ($fechaReserva < $fechaActual) {
-                $this->addFlash('danger', 'La fecha del evento no puede ser anterior a la fecha actual, por favor modifica la fecha de la reserva');
+
+                $mensaje = $translator->trans('The date of the event cannot be earlier than the current date, please modify the date of the reservation');
+
+                $this->addFlash('danger', $mensaje);
 
                 return $this->redirectToRoute('editar', [
                     'id' => $reserva->getId()
@@ -301,7 +317,9 @@ class ReservaController extends AbstractController
             $es = new EventoService($em, $rs); 
             $es->updateEventFromReserva($reserva, $detallesReserva, $tour);
 
-            $this->addFlash('success', 'Su reserva ha sido modificada con éxito, puede encontrar los detalles en su perfil');
+            $mensaje = $translator->trans('Your booking has been successfully modified, you can find the details on your profile');
+
+            $this->addFlash('success', $mensaje);
 
             return $this->redirectToRoute('validar_reserva', ['id' => $reserva->getId()]);
         }
@@ -331,7 +349,9 @@ class ReservaController extends AbstractController
         $this->em->remove($reserva);
         $this->em->flush();
 
-        $this->addFlash('info', 'La reserva ha sido suprimida');
+        $mensaje = $translator->trans('Booking cancelled or deleted');
+
+        $this->addFlash('info', $mensaje);
 
         // Aquí puedes redirigir a una página adecuada después de eliminar la reserva
         return $this->redirectToRoute('reservas');

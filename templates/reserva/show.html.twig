@@ -54,12 +54,12 @@
           </li>    
           <li>
               <div class="buttons">
-                <a href="{{ path('home') }}" class="btn-tertiary my-3">Ver más tours</a>
+                <a href="{{ path('home') }}" class="btn-tertiary my-3">More tours...</a>
                 {% if app.user %}
-                  <button type="submit" class="btn-primary">Validar reserva</button>
+                  <button type="submit" class="btn-primary">Confirm booking</button>
                  {% else %}
                   <a href="{{ path('app_login') }}" class="btn-primary-card">
-                     Reservar
+                     Book for free
                   </a>
                 {% endif %}
               {{ form_end(form) }}

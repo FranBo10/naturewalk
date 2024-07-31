@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %} {% block title %} Reservas {% endblock %} {%
+{% extends 'base.html.twig' %} {% block title %} My Bookings {% endblock %} {%
 block header %} {% include '_partials/_menu2_nav.html.twig' %} {% endblock %} {%
 block body %}
 <div id="main-container" class="reservas my-5">
@@ -7,7 +7,7 @@ block body %}
         <p>{{ message }}</p>
       </div>
       {% endfor %}
-  <h2 class="titulo__reservas text-center w-100 mb-3">Mis reservas</h2>
+  <h2 class="titulo__reservas text-center w-100 mb-3">My Bookings</h2>
 
   {% if app.user.reservas is not empty %}
   <div class="cards__reservas">
@@ -19,25 +19,25 @@ block body %}
           <li><h2>{{ tour.titulo }}</h2></li>
           {% if reserva.detallesReserva is not null %}
           <li>
-            Precio: {% if reserva.detallesReserva.totalReserva == 0 %} Free Tour
+            Price: {% if reserva.detallesReserva.totalReserva == 0 %} Free Tour
             {% else %}
             {{ reserva.detallesReserva.totalReserva/100|number_format(2, '.') }}
             € {% endif %}
           </li>
           <li>
-            Fecha: {{ reserva.evento.fechaEvento|date("d/m/Y") }}
+            Date: {{ reserva.evento.fechaEvento|date("d/m/Y") }}
           </li>
           <li>
-            Cantidad de adultos: {{ reserva.detallesReserva.cantidadAdultos }}
+            Adults: {{ reserva.detallesReserva.cantidadAdultos }}
           </li>
-          <li>Cantidad de niños: {{ reserva.detallesReserva.cantidadKids }}</li>
+          <li>Kids: {{ reserva.detallesReserva.cantidadKids }}</li>
           <li>
             <a
               href="{{ path('editar', { id: reserva.id }) }}"
               type="button"
               class="btn-tertiary"
             >
-              Modificar reserva
+              Modify booking date
             </a>
           </li>
           <li>
@@ -46,11 +46,11 @@ block body %}
               type="button"
               class="btn-danger"
             >
-              Suprimir reserva
+              Cancel / Delete booking
             </a>
           </li>
           {% else %}
-          <li>Detalles de reserva no disponibles.</li>
+          <li>Booking details not available.</li>
           {% endif %}
         </ul>
       </div>
@@ -59,7 +59,7 @@ block body %}
   </div>
   {% else %}
   <div class="text-center mt-5">
-    <h4>Te invitamos a realizar tu reserva</h4>
+    <h4>Come on, book your first tour with us and, let's walk !!!</h4>
     <a href="{{ path('home') }}" class="btn-primary">Volver a inicio</a>
   </div>
   {% endif %}

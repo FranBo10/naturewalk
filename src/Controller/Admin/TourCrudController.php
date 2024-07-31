@@ -46,6 +46,9 @@ class TourCrudController extends AbstractCrudController
             IdField::new('id')->hideOnForm(),
             TimeField::new('hora_inicio', 'Inicio')->setFormat('short')->onlyOnForms(),
             TimeField::new('hora_fin', 'Fin')->setFormat('short')->onlyOnForms(),
+            ChoiceField::new('duracion', 'Duracion')
+                ->setChoices($this->generateTimeRangeChoices(0, 0, 10, 0, 15))
+                ->onlyOnForms(),
             TextField::new('rango', 'Rango')->hideOnForm()->formatValue(function ($value, $entity) {
                 return $entity->getHoraInicio()->format('H:i') . ' - ' . $entity->getHoraFin()->format('H:i');
             }),
@@ -75,4 +78,28 @@ class TourCrudController extends AbstractCrudController
         $tour = new $entityFqcn;
         return $tour;
     }
+
+    private function generateTimeRangeChoices($startHour, $startMinute, $endHour, $endMinute, $step)
+{
+    $rangos = [];
+    $currentHour = $startHour;
+    $currentMinute = $startMinute;
+
+    while ($currentHour < $endHour || ($currentHour == $endHour && $currentMinute <= $endMinute)) {
+        // Formatear la hora y los minutos como "X h Y m"
+        $rangos[] = sprintf('%d h %02d m', $currentHour, $currentMinute);
+        $currentMinute += $step;
+        if ($currentMinute >= 60) {
+            $currentHour++;
+            $currentMinute = 0;
+        }
+    }
+
+    $choices = [];
+    foreach ($rangos as $rango) {
+        $choices[$rango] = $rango;
+    }
+
+    return $choices;
+}
 }

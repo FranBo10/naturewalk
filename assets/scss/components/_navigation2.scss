@@ -39,6 +39,21 @@
   font-weight: 1000;
 }
 
+.logo a span {
+  color: $color-primary !important;
+  font-weight: 1000;
+  text-shadow: 0 0 1px $color-black;
+  &.logoNombre-2 {
+    color: $color-black !important;
+  }
+
+  &:not(.logoNombre-2) {
+    color: $color-black;
+    font-weight: 1000;
+    text-shadow: 0 0 1px $color-black;
+  }
+}
+
 .container__user {
   width: 100%;
   a {

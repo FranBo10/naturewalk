@@ -50,7 +50,7 @@ class RegistrationController extends AbstractController
         MailerService $mailerService,
         TokenGeneratorInterface $tokenGeneratorInterface,
         SessionInterface $session,
-        BlogCategoriaRepository $blogCategoriaRepository
+        BlogCategoriaRepository $blogCategoriaRepository, TranslatorInterface $translator
     ): Response {
         $user = new User();
         $avatars = [];
@@ -104,7 +104,9 @@ class RegistrationController extends AbstractController
                 ]
             );
 
-            $this->addFlash('success', 'Le hemos enviado un e-mail para verificar su cuenta, compruebe su bandeja de correo no deseado');
+            $mensaje = $translator->trans('We have sent you an e-mail to verify your account, please check your spam folder');
+
+            $this->addFlash('success', $mensaje);
             return $this->redirectToRoute('app_login');
         }
 
@@ -149,7 +151,9 @@ class RegistrationController extends AbstractController
         $user->setToken(null);
         $entityManager->flush();
 
-        $this->addFlash("success", "Su cuenta ha sido verificada con éxito, ya puede conectarse");
+        $mensaje = $translator->trans('Your account has been successfully verified, you can now log in');
+
+        $this->addFlash("success", $mensaje);
 
         return $this->redirectToRoute('app_login');
     }

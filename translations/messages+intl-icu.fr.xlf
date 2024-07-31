@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="AEWwFyZ" resname="Thank you for giving your comment, pending for validation">
+        <source>Thank you for giving your comment, pending for validation</source>
+        <target>Merci pour votre commentaire, en attente de validation</target>
+      </trans-unit>
+      <trans-unit id="MlcoR5Z" resname="Your user account has been modified">
+        <source>Your user account has been modified</source>
+        <target>Votre compte utilisateur a été modifié</target>
+      </trans-unit>
+      <trans-unit id="qv9MPBX" resname="We have sent you an e-mail to verify your account, please check your spam folder">
+        <source>We have sent you an e-mail to verify your account, please check your spam folder</source>
+        <target>Nous vous avons envoyé un e-mail pour vérifier votre compte, veuillez vérifier votre dossier de spam</target>
+      </trans-unit>
+      <trans-unit id="62cdC1_" resname="Your account has been successfully verified, you can now log in">
+        <source>Your account has been successfully verified, you can now log in</source>
+        <target>Votre compte a été vérifié avec succès, vous pouvez maintenant vous connecter</target>
+      </trans-unit>
+      <trans-unit id="I079ucx" resname="The date of the event cannot be earlier than the current date, please modify the date of the reservation">
+        <source>The date of the event cannot be earlier than the current date, please modify the date of the reservation</source>
+        <target>La date de l'événement ne peut pas être antérieure à la date actuelle, veuillez modifier la date de la réservation</target>
+      </trans-unit>
+      <trans-unit id="PKyRqSs" resname="The event is closed and cannot receive further reservations">
+        <source>The event is closed and cannot receive further reservations</source>
+        <target>L'événement est fermé et ne peut plus recevoir de réservations</target>
+      </trans-unit>
+      <trans-unit id="VgE69sn" resname="Ups! We do not have a visit this day for this tour, please modify the booking date">
+        <source>Ups! We do not have a visit this day for this tour, please modify the booking date</source>
+        <target>Oups ! Nous n'avons pas de visite ce jour-là pour cette visite, veuillez modifier la date de réservation</target>
+      </trans-unit>
+      <trans-unit id="8jmPjNe" resname="Sorry! The maximum number of participants for this event has been reached">
+        <source>Sorry! The maximum number of participants for this event has been reached</source>
+        <target>Désolé ! Le nombre maximum de participants pour cet événement a été atteint</target>
+      </trans-unit>
+      <trans-unit id="m2FLarB" resname="Your booking has been confirmed, an e-mail has been sent, please check the spam">
+        <source>Your booking has been confirmed, an e-mail has been sent, please check the spam</source>
+        <target>Votre réservation a été confirmée, un e-mail a été envoyé, veuillez vérifier les spams</target>
+      </trans-unit>
+      <trans-unit id="xt8coUt" resname="Your booking has been successfully modified, you can find the details on your profile">
+        <source>Your booking has been successfully modified, you can find the details on your profile</source>
+        <target>Votre réservation a été modifiée avec succès, vous pouvez trouver les détails sur votre profil</target>
+      </trans-unit>
+      <trans-unit id="chY5pjQ" resname="Booking cancelled or deleted">
+        <source>Booking cancelled or deleted</source>
+        <target>Réservation annulée ou supprimée</target>
+      </trans-unit>
+      <trans-unit id="trPRFkp" resname="Book now">
+        <source>Book now</source>
+        <target>Réservez maintenant</target>
+      </trans-unit>
+      <trans-unit id="Um4Ah8w" resname="Description">
+        <source>Description</source>
+        <target>Description</target>
+      </trans-unit>
+      <trans-unit id="Wm5PVsC" resname="Prices">
+        <source>Prices</source>
+        <target>Tarifs</target>
+      </trans-unit>
+      <trans-unit id="RZid5J_" resname="Details">
+        <source>Details</source>
+        <target>Détails</target>
+      </trans-unit>
+      <trans-unit id="hbMyKFJ" resname="Cancelations">
+        <source>Cancelations</source>
+        <target>Annulations</target>
+      </trans-unit>
+      <trans-unit id="8IGDBZ." resname="Meeting point">
+        <source>Meeting point</source>
+        <target>Point de rencontre</target>
+      </trans-unit>
+      <trans-unit id="3K3og8k" resname="Opinions">
+        <source>Opinions</source>
+        <target>Avis</target>
+      </trans-unit>
+      <trans-unit id="ll5qjEc" resname="See full description">
+        <source>See full description</source>
+        <target>Voir la description complète</target>
+      </trans-unit>
+      <trans-unit id="rj8kHje" resname="Hide description">
+        <source>Hide description</source>
+        <target>Masquer la description</target>
+      </trans-unit>
+      <trans-unit id="k8kchR5" resname="Price">
+        <source>Price</source>
+        <target>Prix</target>
+      </trans-unit>
+      <trans-unit id="B1zmlv3" resname="Free tours do not have a fixed price. Each person values the work of the guide and, at the end of the tour, he delivers the amount he considers to his will according to their satisfaction.">
+        <source>Free tours do not have a fixed price. Each person values the work of the guide and, at the end of the tour, he delivers the amount he considers to his will according to their satisfaction.</source>
+        <target>Les visites gratuites n'ont pas de prix fixe. Chaque personne évalue le travail du guide et, à la fin de la visite, elle donne le montant qu'elle considère en fonction de sa satisfaction.</target>
+      </trans-unit>
+      <trans-unit id="T8UqPEx" resname="Duration">
+        <source>Duration</source>
+        <target>Durée</target>
+      </trans-unit>
+      <trans-unit id="pP5lJk7" resname="Language">
+        <source>Language</source>
+        <target>Langue</target>
+      </trans-unit>
+      <trans-unit id="pb7KWq0" resname="The activity is carried out with an English-speaking guide">
+        <source>The activity is carried out with an English-speaking guide</source>
+        <target>L'activité est réalisée avec un guide anglophone</target>
+      </trans-unit>
+      <trans-unit id="uoKamLe" resname="Included">
+        <source>Included</source>
+        <target>Inclus</target>
+      </trans-unit>
+      <trans-unit id="kxtze9r" resname="English-speaking guide">
+        <source>English-speaking guide</source>
+        <target>Guide anglophone</target>
+      </trans-unit>
+      <trans-unit id="6LW55fz" resname="Not incluided">
+        <source>Not incluided</source>
+        <target>Non inclus</target>
+      </trans-unit>
+      <trans-unit id="ODik2Mu" resname="Tips">
+        <source>Tips</source>
+        <target>Pourboires</target>
+      </trans-unit>
+      <trans-unit id="jNiQVWY" resname="When to book ?">
+        <source>When to book ?</source>
+        <target>Quand réserver ?</target>
+      </trans-unit>
+      <trans-unit id="JQ4GmQK" resname="You can book up to 30 minutes before the tour starts">
+        <source>You can book up to 30 minutes before the tour starts</source>
+        <target>Vous pouvez réserver jusqu'à 30 minutes avant le début de la visite</target>
+      </trans-unit>
+      <trans-unit id="DUqOq60" resname="Accesibility">
+        <source>Accesibility</source>
+        <target>Accessibilité</target>
+      </trans-unit>
+      <trans-unit id="RZCXY7t" resname="Not wheelchair accessible">
+        <source>Not wheelchair accessible</source>
+        <target>Non accessible en fauteuil roulant</target>
+      </trans-unit>
+      <trans-unit id="fcHNfq." resname="Pets">
+        <source>Pets</source>
+        <target>Animaux domestiques</target>
+      </trans-unit>
+      <trans-unit id="G7IB0Yg" resname="Allowed">
+        <source>Allowed</source>
+        <target>Autorisé</target>
+      </trans-unit>
+      <trans-unit id="6VapQEt" resname="Frequently asked questions">
+        <source>Frequently asked questions</source>
+        <target>Questions fréquentes</target>
+      </trans-unit>
+      <trans-unit id="WdKLGoQ" resname="How to make the reservation ?">
+        <source>How to make the reservation ?</source>
+        <target>Comment faire la réservation ?</target>
+      </trans-unit>
+      <trans-unit id="luB1dRj" resname="Is a minimum number of participants needed ?">
+        <source>Is a minimum number of participants needed ?</source>
+        <target>Un nombre minimum de participants est-il nécessaire ?</target>
+      </trans-unit>
+      <trans-unit id="yxICmA6" resname="The minimum number of participants is one person, so if it's your case, sign up and enjoy a pleasant time">
+        <source>The minimum number of participants is one person, so if it's your case, sign up and enjoy a pleasant time</source>
+        <target>Le nombre minimum de participants est d'une personne, donc si c'est votre cas, inscrivez-vous et profitez d'un moment agréable</target>
+      </trans-unit>
+      <trans-unit id="0YIr1wY" resname="For any other doubt,">
+        <source>For any other doubt,</source>
+        <target>Pour toute autre question,</target>
+      </trans-unit>
+      <trans-unit id="JsS.tj7" resname="Free cancelation">
+        <source>Free cancelation</source>
+        <target>Annulation gratuite</target>
+      </trans-unit>
+      <trans-unit id="j5qD25C" resname="If you will not be able to attend the tour, please cancel the reservation, otherwise, the guide will be waiting for you.">
+        <source>If you will not be able to attend the tour, please cancel the reservation, otherwise, the guide will be waiting for you.</source>
+        <target>Si vous ne pouvez pas assister à la visite, veuillez annuler la réservation, sinon le guide vous attendra.</target>
+      </trans-unit>
+      <trans-unit id="mxzPP1h" resname="Second meeting point">
+        <source>Second meeting point</source>
+        <target>Deuxième point de rencontre</target>
+      </trans-unit>
+      <trans-unit id="T943n.D" resname="What our customers say">
+        <source>What our customers say</source>
+        <target>Ce que disent nos clients</target>
+      </trans-unit>
+      <trans-unit id="8EAv4e9" resname="All reviews have been written by real customers who have booked with us.">
+        <source>All reviews have been written by real customers who have booked with us.</source>
+        <target>Tous les avis ont été rédigés par de vrais clients qui ont réservé avec nous.</target>
+      </trans-unit>
+      <trans-unit id="h16XilN" resname="Leave a comment">
+        <source>Leave a comment</source>
+        <target>Laissez un commentaire</target>
+      </trans-unit>
+      <trans-unit id="VHBQJdZ" resname="Leave us your review">
+        <source>Leave us your review</source>
+        <target>Laissez-nous votre avis</target>
+      </trans-unit>
+      <trans-unit id="VF_AdQF" resname="Leave your comments">
+        <source>Leave your comments</source>
+        <target>Laissez vos commentaires</target>
+      </trans-unit>
+      <trans-unit id="kovyuFz" resname="Log in to leave a comment">
+        <source>Log in to leave a comment</source>
+        <target>Connectez-vous pour laisser un commentaire</target>
+      </trans-unit>
+      <trans-unit id="o_45aKS" resname="Click here to connect">
+        <source>Click here to connect</source>
+        <target>Cliquez ici pour vous connecter</target>
+      </trans-unit>
+      <trans-unit id="klpG.vz" resname="You may also like">
+        <source>You may also like</source>
+        <target>Vous aimerez aussi</target>
+      </trans-unit>
+      <trans-unit id="v8id2CK" resname="Price:">
+        <source>Price:</source>
+        <target>Prix :</target>
+      </trans-unit>
+      <trans-unit id="6Qi_Fni" resname="Free Tour">
+        <source>Free Tour</source>
+        <target>Visite gratuite</target>
+      </trans-unit>
+      <trans-unit id="CfYkImZ" resname="More information">
+        <source>More information</source>
+        <target>Plus d'informations</target>
+      </trans-unit>
+      <trans-unit id="3CAVSYb" resname="Welcome to our site !">
+        <source>Welcome to our site !</source>
+        <target>Bienvenue sur notre site !</target>
+      </trans-unit>
+      <trans-unit id="UsBjD0C" resname="Join us and discover cool towns and beautiful places full of life and nature">
+        <source>Join us and discover cool towns and beautiful places full of life and nature</source>
+        <target>Rejoignez-nous et découvrez des villes sympas et des endroits magnifiques pleins de vie et de nature</target>
+      </trans-unit>
+      <trans-unit id="zSKW61o" resname="Enjoy the experience">
+        <source>Enjoy the experience</source>
+        <target>Profitez de l'expérience</target>
+      </trans-unit>
+      <trans-unit id="Jiy.S9b" resname="For booking the tour of">
+        <source>For booking the tour of</source>
+        <target>Pour réserver le tour de</target>
+      </trans-unit>
+      <trans-unit id="zwxZdii" resname=", choose the desired date and complete the form, indicating the number of participants. Confirmation is immediate.">
+        <source>, choose the desired date and complete the form, indicating the number of participants. Confirmation is immediate.</source>
+        <target>, choisissez la date souhaitée et complétez le formulaire, en indiquant le nombre de participants. La confirmation est immédiate.</target>
+      </trans-unit>
+      <trans-unit id="rQGHrde" resname="My Account">
+        <source>My Account</source>
+        <target>Mon Compte</target>
+      </trans-unit>
+      <trans-unit id="MwXrWAk" resname="Phone:">
+        <source>Phone:</source>
+        <target>Téléphone:</target>
+      </trans-unit>
+      <trans-unit id="Y9sQ2KC" resname="E-mail:">
+        <source>E-mail:</source>
+        <target>E-mail:</target>
+      </trans-unit>
+      <trans-unit id="OohneGN" resname="Personal Details">
+        <source>Personal Details</source>
+        <target>Détails Personnels</target>
+      </trans-unit>
+      <trans-unit id="PUpFZgq" resname="Choose your preferred avatar">
+        <source>Choose your preferred avatar</source>
+        <target>Choisissez votre avatar préféré</target>
+      </trans-unit>
+      <trans-unit id="Ib1WVfQ" resname="Validate changes">
+        <source>Validate changes</source>
+        <target>Valider les modifications</target>
+      </trans-unit>
+
+    </body>
+  </file>
+</xliff>

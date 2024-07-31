@@ -19,6 +19,7 @@ class ContactoFormType extends AbstractType
     {
         $builder
             ->add('nombre', TextType::class, [
+                'label' => 'Name',
                 'constraints' => [
                     new NotBlank()
                 ]
@@ -30,6 +31,7 @@ class ContactoFormType extends AbstractType
                 ]
             ])
             ->add('mensaje', TextareaType::class, [
+                'label' => 'Message',
                 'constraints' => [
                     new NotBlank()
                 ]

@@ -56,6 +56,9 @@ class Tour
     #[ORM\Column(type: 'time')]
     private ?\DateTimeInterface $hora_fin = null;
 
+    #[ORM\Column(type: 'string', length: 20, nullable: true)] // Cambiar el tipo de datos a string
+    private ?string $duracion = null;
+
     #[ORM\Column(length: 50)]
     private ?string $comienzo = null;
 
@@ -351,6 +354,18 @@ class Tour
     public function setFinal(string $final): static
     {
         $this->final = $final;
+
+        return $this;
+    }    
+    
+    public function getDuracion(): ?string
+    {
+        return $this->duracion;
+    }
+    
+    public function setDuracion(?string $duracion): static
+    {
+        $this->duracion = $duracion;
 
         return $this;
     }

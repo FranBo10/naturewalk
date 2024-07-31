@@ -2,17 +2,17 @@
 endblock %} {% block body %}
 <div id="main-container" class="container my-5 text-center">
   <p>
-    Si existe una cuenta que coincida con su correo electrónico, entonces se
-    acaba de enviar un correo electrónico que contiene un enlace que puede
-    utilizar para restablecer su contraseña. Este enlace expira en
+    If an account exists that matches your email, then
+    you have just sent an email that contains a link that you can
+    use to reset your password. This link expires in
     {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle')
 
     }}.
   </p>
   <p>
-    Si no recibes un correo electrónico, revisa tu carpeta de correo no deseado
-    o
-    <a href="{{ path('app_forgot_password_request') }}">prueba de nuevo</a>.
+    If you don't receive an email, check your spam folder
+    or
+    <a href="{{ path('app_forgot_password_request') }}">try again.</a>.
   </p>
 </div>
 {% endblock %}

@@ -7,11 +7,11 @@ mostrarLink.addEventListener('click', function (event) {
 
   if (descripcionHidden.classList.contains('descripcion-visible')) {
     descripcionHidden.classList.remove('descripcion-visible');
-    mostrarLink.textContent = 'Ver descripción completa';
+    mostrarLink.textContent = 'See full description';
     ocultarLink.classList.add('hidden');
   } else {
     descripcionHidden.classList.add('descripcion-visible');
-    mostrarLink.textContent = 'Ocultar descripción';
+    mostrarLink.textContent = 'Hide description';
     ocultarLink.classList.remove('hidden'); // Removemos la clase 'hidden' si está presente
   }
 });
