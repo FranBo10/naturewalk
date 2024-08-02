@@ -1,43 +1,57 @@
-{% extends 'base.html.twig' %} {% block title %} My Bookings {% endblock %} {%
-block header %} {% include '_partials/_menu2_nav.html.twig' %} {% endblock %} {%
-block body %}
+{% extends 'base.html.twig' %} {% block title %} {{ "My Bookings" | trans }} {%
+endblock %} {% block header %} {% include '_partials/_menu2_nav.html.twig' %} {%
+endblock %} {% block body %}
 <div id="main-container" class="reservas my-5">
   {% for message in app.flashes('info') %}
-      <div class="alert alert-info text-center w-50 mx-auto my-2">
-        <p>{{ message }}</p>
-      </div>
-      {% endfor %}
-  <h2 class="titulo__reservas text-center w-100 mb-3">My Bookings</h2>
+  <div class="alert alert-info text-center w-50 mx-auto my-2">
+    <p>{{ message }}</p>
+  </div>
+  {% endfor %}
 
-  {% if app.user.reservas is not empty %}
+  <h2 class="titulo__reservas text-center w-100 mb-3">
+    {{ "My Bookings" | trans }}
+  </h2>
+
+  {% if eventos is not empty %}
   <div class="cards__reservas">
-    {% for reserva in app.user.reservas %} {% for tour in reserva.tours %}
+    {% for evento in eventos %} {% for reserva in evento.reservas %} {% if
+    reserva.user == app.user %}
     <article class="card__reservas">
-      <img src="{{ asset('uploads/images/' ~ tour.imagen) }}" alt="" />
+      <img
+        src="{{ asset('uploads/images/' ~ reserva.tours[0].imagen) }}"
+        alt=""
+      />
       <div class="reservas-detalles">
         <ul>
-          <li><h2>{{ tour.titulo }}</h2></li>
-          {% if reserva.detallesReserva is not null %}
           <li>
-            Price: {% if reserva.detallesReserva.totalReserva == 0 %} Free Tour
+            <h2>{{ reserva.tours[0].titulo }}</h2>
+          </li>
+          <li>
+            {{ "Price" | trans }}: {% if reserva.detallesReserva.totalReserva ==
+            0 %}
+            {{ "Free Tour" | trans }}
             {% else %}
             {{ reserva.detallesReserva.totalReserva/100|number_format(2, '.') }}
             € {% endif %}
           </li>
           <li>
-            Date: {{ reserva.evento.fechaEvento|date("d/m/Y") }}
+            {{ "Date" | trans }}:
+            {{ reserva.detallesReserva.fechaEvento|date("d/m/Y") }}
           </li>
           <li>
-            Adults: {{ reserva.detallesReserva.cantidadAdultos }}
+            {{ "Adults" | trans }}:
+            {{ reserva.detallesReserva.cantidadAdultos }}
           </li>
-          <li>Kids: {{ reserva.detallesReserva.cantidadKids }}</li>
+          <li>
+            {{ "Kids" | trans }}: {{ reserva.detallesReserva.cantidadKids }}
+          </li>
           <li>
             <a
               href="{{ path('editar', { id: reserva.id }) }}"
               type="button"
               class="btn-tertiary"
             >
-              Modify booking date
+              {{ "Modify your booking date" | trans }}
             </a>
           </li>
           <li>
@@ -46,21 +60,22 @@ block body %}
               type="button"
               class="btn-danger"
             >
-              Cancel / Delete booking
+              {{ "Cancel / Delete booking" | trans }}
             </a>
           </li>
-          {% else %}
-          <li>Booking details not available.</li>
-          {% endif %}
         </ul>
       </div>
     </article>
-    {% endfor %} {% endfor %}
+    {% endif %} {% endfor %} {% endfor %}
   </div>
   {% else %}
-  <div class="text-center mt-5">
-    <h4>Come on, book your first tour with us and, let's walk !!!</h4>
-    <a href="{{ path('home') }}" class="btn-primary">Volver a inicio</a>
+  <div class="reserva__vacia text-center">
+    <h4>
+      {{ "Come on, book your first tour with us and let's walk!!!" | trans }}
+    </h4>
+    <a href="{{ path('home') }}" class="btn-primary mt-3">{{
+      "Back to homepage" | trans
+    }}</a>
   </div>
   {% endif %}
 </div>

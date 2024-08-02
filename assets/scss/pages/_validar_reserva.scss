@@ -1,5 +1,6 @@
 .reserva-container {
   display: flex;
+  align-items: flex-start;
   justify-content: center;
   margin: auto;
   color: $color-black;
@@ -15,14 +16,15 @@
   }
 }
 
-.reserva-container img {
+.image-container {  
   margin-top: 30px;
 }
 
 .reserva-container img {
-  @media(max-width: 600px) {
-      width: 500px;
-      height: 350px;
+  display: block;
+  @media (max-width: 600px) {
+    width: 500px;
+    height: 350px;
   }
   @include media(smartPhone) {
     width: 450px;
@@ -34,10 +36,12 @@
   }
 }
 
-
+.titulo-validar {
+  text-align: center !important;
+}
 
 .detalles-reserva {
-  @include flexColumn();
+  @include flexStart();
 
   ul {
     list-style-type: none;
@@ -62,38 +66,8 @@
   }
 }
 
-@media (max-width: 998px) {
-  .detalles-reserva {
-    width: 100%;
-    ul {
-      width: 100%;
-    }
-  }
-}
-
 .button {
   text-align: center;
-}
-
-.datos_form_reserva-container {
-  width: 80%;
-  margin: auto;
-  height: 35px;
-  color: $color-gray-light;
-  background-color: $color-tertiary;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  margin-top: 1rem;
-  position: relative;
-  padding: 0.5rem;
-}
-
-.datos_form {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  p {
-    font-size: calc($main-font-size / 1.25);
-  }
 }
 
 .options_datos_reserva {
@@ -117,4 +91,21 @@
   margin: auto;
   color: $color-black;
   border: 1px solid $color-gray-dark;
+}
+
+@media (tablet) {
+  .detalles-reserva {
+    width: 100%;
+    ul {
+      width: 100%;
+    }
+    ul h3 {
+      text-align: center;
+    }
+  }
+}
+@media (max-width: 768px) {
+  .detalles-reserva ul {
+    padding-left: 0 !important;
+  }
 }

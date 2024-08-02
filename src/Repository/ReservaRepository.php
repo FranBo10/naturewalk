@@ -39,14 +39,6 @@ class ReservaRepository extends ServiceEntityRepository
         }
     }
 
-    public function findByEventDateDesc()
-    {
-        return $this->createQueryBuilder('r')
-            ->leftJoin('r.evento', 'e')
-            ->orderBy('e.fecha_evento', 'ASC')
-            ->getQuery()
-            ->getResult();
-    }
 
     //    /**
     //     * @return Reserva[] Returns an array of Reserva objects

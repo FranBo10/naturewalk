@@ -16,9 +16,7 @@
   background-color: rgba(0, 0, 0, 0.5);
   padding: 10px;
   transition: opacity 0.3s;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  @include flexStart();
   bottom: 0;
 }
 
@@ -50,9 +48,7 @@
 }
 
 .detalle-tour {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @include flexBetween();
   height: 100%;
   margin: auto;
   padding: 0 20px;
@@ -64,8 +60,7 @@
 
 @include media(tablet) {
   .detalle-tour {
-    display: flex;
-    justify-content: center;
+    @include flexCenter(row);
   }
   .detalle-tour ul li:nth-child(5) {
     display: none;
@@ -74,8 +69,7 @@
 
 @include media(smartPhone) {
   .detalle-tour {
-    display: flex;
-    justify-content: flex-start;
+    @include flexStart();
   }
   .detalle-tour ul li:nth-child(4) {
     display: none;
@@ -89,8 +83,7 @@
 }
 
 .detalle-tour > ul {
-  display: flex;
-  align-items: center;
+  @include flexCenter(row);
   list-style: none;
   padding: 0;
   list-style: none;
@@ -120,6 +113,12 @@
 
 .container-detalles {
   padding: 0px 40px;
+  @include media(tablet) {
+    padding: 0px 20px;
+  }
+  @include media(smartPhone) {
+    padding: 0px 10px;
+  }
 }
 
 .desconectado {
@@ -203,65 +202,34 @@
 }
 
 .detalle-titulo {
-  display: flex;
-  align-items: center;
+  @include flexCenter(row);
   gap: 7px;
 
   i {
     font-size: $medium-font-size;
     color: $color-primary;
   }
-  h5 {
+  h4 {
     margin-top: 5px;
+  }
+  @include media(tablet) {
+    margin-right: 30px;
   }
 }
 
-.detalle-duracion {
-  display: flex;
-  justify-content: space-between;
-  margin-right: 30px;
-}
-
-.detalle-idioma {
-  display: flex;
-  justify-content: space-between;
-  gap: 30px;
-}
-
-.detalle-incluido {
-  display: flex;
-  justify-content: space-between;
-  margin-right: 30px;
-}
-
-.detalle-noincluido {
-  display: flex;
-  justify-content: space-between;
-  margin-right: 30px;
-}
-
-.detalle-reservar {
-  display: flex;
-  justify-content: space-between;
-  gap: 30px;
-}
-
-.detalle-accesibilidad {
-  display: flex;
-  justify-content: space-between;
-  margin-right: 30px;
-}
-
-.detalle-mascotas {
-  display: flex;
-  justify-content: space-between;
-  margin-right: 30px;
-}
-
+.detalle-duracion,
+.detalle-idioma,
+.detalle-incluido,
+.detalle-noincluido,
+.detalle-reservar,
+.detalle-accesibilidad,
+.detalle-mascotas,
 .detalle-faq {
-  display: flex;
-  justify-content: space-between;
+  @include flexBetween();
   margin-right: 30px;
+  @include media(tablet) {
+    margin-right: 0px;
+  }
 }
 
 .detalle-faq-2 ul {
@@ -308,24 +276,8 @@
   }
 }
 
-.mapa {
-  @include flexColumn();
-
-  iframe {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  @include media(smartPhone) {
-    margin: 0 auto;
-    max-width: calc(100% - 20px);
-  }
-}
-
 .container-detalles-reserva {
-  display: flex;
-  justify-content: flex-start;
-  text-align: center;
+  @include flexStart();
 }
 
 .full-width {
@@ -380,12 +332,14 @@
   margin-top: 2px;
 }
 
-.stars, .valoracion {
+.stars,
+.valoracion {
   margin-top: 10px;
   min-width: 140px;
 }
 
-.stars i, .valoraciones i {
+.stars i,
+.valoraciones i {
   color: black;
   font-size: $big-font-size;
 }

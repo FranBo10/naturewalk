@@ -225,9 +225,9 @@
         <source>Welcome to our site !</source>
         <target>Bienvenue sur notre site !</target>
       </trans-unit>
-      <trans-unit id="UsBjD0C" resname="Join us and discover cool towns and beautiful places full of life and nature">
-        <source>Join us and discover cool towns and beautiful places full of life and nature</source>
-        <target>Rejoignez-nous et découvrez des villes sympas et des endroits magnifiques pleins de vie et de nature</target>
+      <trans-unit id="VdCKOL7" resname="Join us and discover traditional villages and beautiful places full of life and nature">
+        <source>Join us and discover traditional villages and beautiful places full of life and nature</source>
+        <target>Rejoignez-nous et découvrez des villes traditionelles et des endroits magnifiques pleins de vie et de nature</target>
       </trans-unit>
       <trans-unit id="zSKW61o" resname="Enjoy the experience">
         <source>Enjoy the experience</source>
@@ -265,7 +265,106 @@
         <source>Validate changes</source>
         <target>Valider les modifications</target>
       </trans-unit>
-
+      <trans-unit id="7quc1EI" resname="Validated">
+        <source>Validated</source>
+        <target>Validé</target>
+      </trans-unit>
+      <trans-unit id="pVqWkgV" resname="Booking Details">
+        <source>Booking Details</source>
+        <target>Détails de la réservation</target>
+      </trans-unit>
+      <trans-unit id="lI4D5wV" resname="Booking">
+        <source>Booking</source>
+        <target>Réservation</target>
+      </trans-unit>
+      <trans-unit id="n_MLE5c" resname="Tour date">
+        <source>Tour date</source>
+        <target>Date de la visite</target>
+      </trans-unit>
+      <trans-unit id="yKdZKAW" resname="Adults">
+        <source>Adults</source>
+        <target>Adultes</target>
+      </trans-unit>
+      <trans-unit id="j1q9km3" resname="Kids">
+        <source>Kids</source>
+        <target>Enfants</target>
+      </trans-unit>
+      <trans-unit id="7uoQHHd" resname="See my bookings">
+        <source>See my bookings</source>
+        <target>Voir mes réservations</target>
+      </trans-unit>
+      <trans-unit id="xUJRALY" resname="Proceed to payment">
+        <source>Proceed to payment</source>
+        <target>Procéder au paiement</target>
+      </trans-unit>
+      <trans-unit id="JhI9gGp" resname="Booking details not available.">
+        <source>Booking details not available.</source>
+        <target>Détails de la réservation non disponibles.</target>
+      </trans-unit>
+      <trans-unit id="0Q7aDLn" resname="No bookings available.">
+        <source>No bookings available.</source>
+        <target>Aucune réservation disponible.</target>
+      </trans-unit>
+      <trans-unit id="WOHDomw" resname="Make your reservation">
+        <source>Make your reservation</source>
+        <target>Faites votre réservation</target>
+      </trans-unit>
+      <trans-unit id="Q974PDR" resname="Select a date">
+        <source>Select a date</source>
+        <target>Sélectionnez une date</target>
+      </trans-unit>
+      <trans-unit id="wljpTh2" resname="More tours...">
+        <source>More tours...</source>
+        <target>Plus de tours...</target>
+      </trans-unit>
+      <trans-unit id="_h4X2Ph" resname="Confirm booking">
+        <source>Confirm booking</source>
+        <target>Confirmer la réservation</target>
+      </trans-unit>
+      <trans-unit id="iK9586p" resname="Select number of adults">
+        <source>Select number of adults</source>
+        <target>Sélectionnez le nombre d'adultes</target>
+      </trans-unit>
+      <trans-unit id="PSSXq2p" resname="Select number of kids">
+        <source>Select number of kids</source>
+        <target>Sélectionnez le nombre d'enfants</target>
+      </trans-unit>
+      <trans-unit id="awNjpQs" resname="My Bookings">
+        <source>My Bookings</source>
+        <target>Mes réservations</target>
+      </trans-unit>
+      <trans-unit id="mcQKtAW" resname="Date">
+        <source>Date</source>
+        <target>Date</target>
+      </trans-unit>
+      <trans-unit id="MxGRTkP" resname="Modify your booking date">
+        <source>Modify your booking date</source>
+        <target>Modifier la date de votre réservation</target>
+      </trans-unit>
+      <trans-unit id="8tJjORm" resname="Cancel / Delete booking">
+        <source>Cancel / Delete booking</source>
+        <target>Annuler / Supprimer la réservation</target>
+      </trans-unit>
+      <trans-unit id="oEKOT5v" resname="Come on, book your first tour with us and, let's walk !!!">
+        <source>Come on, book your first tour with us and, let's walk !!!</source>
+        <target>Allez, réservez votre première visite avec nous et marchons !!!</target>
+      </trans-unit>
+      <trans-unit id="yzX3MyE" resname="Back to homepage">
+        <source>Back to homepage</source>
+        <target>Retour à la page d'accueil</target>
+      </trans-unit>
+      <trans-unit id="RzqNsSa" resname="Edit booking">
+        <source>Edit booking</source>
+        <target>Modifier la réservation</target>
+      </trans-unit>
+      <trans-unit id="V.vnwR." resname="Modify reservation">
+        <source>Modify reservation</source>
+        <target>Modifier la réservation</target>
+      </trans-unit>
+      <trans-unit id="5_Lnakf" resname="No booking registered yet">
+        <source>No booking registered yet</source>
+        <target>Aucune réservation enregistrée pour le moment</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

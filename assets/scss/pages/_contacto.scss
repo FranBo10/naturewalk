@@ -1,9 +1,7 @@
 #main-container {
   color: $color-gray-darken;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include flexCenter(column);
   padding-top: 40px;
   transition: all 300ms ease;
   @media (max-width: 769px) {

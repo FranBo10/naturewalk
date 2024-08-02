@@ -133,7 +133,7 @@ class RegistrationController extends AbstractController
 
 
     #[Route('/verify/{token}/{id\d+>}', name: 'account_verify', methods: ['GET'])]
-    public function verifyUserEmail($token, User $user, EntityManagerInterface $entityManager): Response
+    public function verifyUserEmail($token, User $user, EntityManagerInterface $entityManager, TranslatorInterface $translator): Response
     {
         if ($user->getToken() !== $token) {
             throw new AccessDeniedException();

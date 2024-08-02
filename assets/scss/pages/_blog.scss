@@ -14,9 +14,7 @@
 }
 
 .hero_single .opacity-mask {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  @include flexCenter(column);
   height: 100%;
 }
 
@@ -308,8 +306,7 @@ article.blog .post_info small {
   color: #999;
   font-size: 13px;
   font-size: 1.2rem;
-  display: flex;
-  justify-content: flex-end;
+  @include flexCenter(row);
   margin-right: 20px;
   margin-bottom: 10px;
   @include media(tablet) {

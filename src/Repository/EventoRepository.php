@@ -21,6 +21,20 @@ class EventoRepository extends ServiceEntityRepository
         parent::__construct($registry, Evento::class);
     }
 
+
+    public function findByUserOrderedByFechaEventoDesc($user)
+    {
+        return $this->createQueryBuilder('e')
+            ->leftJoin('e.reservas', 'r')
+            ->leftJoin('r.detallesReserva', 'd')
+            ->andWhere('r.user = :user')
+            ->setParameter('user', $user)
+            ->orderBy('d.fecha_evento', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+
+
 //    /**
 //     * @return Evento[] Returns an array of Evento objects
 //     */

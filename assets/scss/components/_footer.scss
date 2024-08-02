@@ -51,15 +51,13 @@ footer {
 }
 
 .footer_col_payment {
-  display: flex;
-  flex-direction: column;
+  @include flexCenter(column);
   padding: 2rem;
 }
 
 .order-tracking {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include flexCenter(column);
+  text-align: center;
   margin-bottom: 1.1rem;
 }
 
@@ -121,110 +119,3 @@ footer {
     font-size: $small-font-size;
   }
 }
-
-// footer {
-//     display: flex;
-//     align-items: center;
-//     justify-content: space-around;
-//     background: $color-gray-darken;
-//     color: white;
-
-// }
-
-// .footer-1 {
-//     display: flex;
-//     justify-content: space-between;
-//     width: 100%;
-//     padding: 1rem 0;
-// }
-
-// .redes-sociales__column {
-//     width: 50%;
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//     gap: 20px;
-//     padding: $main-font-size;
-
-// }
-// .redes-sociales__elementos{
-//     width: 100%;
-//  display:flex;
-//  justify-content: center;
-//  align-items: center;
-//  gap: 50px;
-//  margin-bottom: 20px;
-//  .izq, .dcha {
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//     justify-content: center;
-//     gap: 20px
-//  }
-//  img {
-//     border-radius: 50%;
-//  }
-// }
-
-// .redes-sociales-down{
-//     display: flex;
-//     flex-direction: column;
-//     width: 100%;
-//     text-align: center;
-//     .copyright{
-//         display: flex;
-//         justify-content: center;
-//     }
-//     a{
-//         font-size: $main-font-size;
-//         text-decoration: none;
-//     }
-//     p{
-//         font-size: $main-font-size;
-//     }
-
-// }
-
-// .quienes-somos__column {
-//     width: 50%;
-//     display: flex;
-//     flex-direction: row;
-//     align-items: center;
-// }
-
-// .quienes-somos__column h2,
-// .redes-sociales__column h2 {
-//     font-size: $medium-font-size;
-//     margin-bottom: 20px;
-// }
-
-// .column__right-up {
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: center;
-//     align-items: center;
-//     gap: $big-font-size;
-//     font-size: $medium-font-size;
-//     width: 50%;
-//     margin: 10px 0px;
-//     img{
-//         border-radius: 50%;
-//     }
-//     a{
-//         text-decoration: none !important ;
-//         font-size: $main-font-size;
-//     }
-// }
-
-// .column__right-down{
-//     display: flex;
-//     flex-direction: column;
-//     .metodos__pago{
-//         display: flex;
-//         justify-content: space-around;
-//         img{
-//             width: 45px;
-//             height: 45px;
-//         }
-//     }
-// }

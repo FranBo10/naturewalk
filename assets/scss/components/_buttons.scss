@@ -171,9 +171,7 @@
 }
 
 .btn-home {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flexCenter(row);
   padding: 0.375rem 0.75rem;
   background-color: $color-primary;
   border-color: $color-primary;

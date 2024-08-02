@@ -1,5 +1,6 @@
-{% extends 'base.html.twig' %} 
-{% block title %} Validar reserva {% endblock %}
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'Validated'|trans }}{% endblock %}
 
 {% block body %}
     <div id="main-container" class="container my-5">
@@ -9,9 +10,7 @@
             </div>
         {% endfor %}
 
-        <div class="titulo__reservas">
-            <h2 class="text-center w-100 my-3 pb-3 border-bottom border-dark">Resumen de reserva</h2>
-        </div>
+            <h2 class="titulo__reservas text-center w-100 mb-3">{{ 'Booking Details'|trans }}</h2>
 
         {% for tour in reserva.tours %}
             <div class="reserva-container">
@@ -25,22 +24,22 @@
                 {% if app.user.reservas is not empty %}
                     <div class="detalles-reserva">
                         <ul>
-                            <h3>{{ tour.titulo }}</h3>
+                            <h3 class="titulo-validar">{{ tour.titulo }}</h3>
                             <li>
-                                <p class="card-title">N°. reserva: {{ reserva.referencia }}</p>
+                                <p class="card-title">{{ 'Booking'|trans }} N°. : {{ reserva.referencia }}</p>
                             </li>
 
                             {% if reserva.detallesReserva is not null %}
                                 <li>
                                     <p class="card-title">
-                                        Fecha del tour: {{ reserva.detallesReserva.fechaEvento|date('d/m/y') }}
+                                        {{ 'Tour date'|trans }} : {{ reserva.detallesReserva.fechaEvento|date('d/m/y') }}
                                     </p>
                                 </li>
                                 <li>
-                                    <p class="card-title">Adultos: {{ reserva.detallesReserva.cantidadAdultos }}</p>
+                                    <p class="card-title">{{ 'Adults'|trans }} : {{ reserva.detallesReserva.cantidadAdultos }}</p>
                                 </li>
                                 <li>
-                                    <p class="card-title">Niños: {{ reserva.detallesReserva.cantidadKids }}</p>
+                                    <p class="card-title">{{ 'Kids'|trans }} : {{ reserva.detallesReserva.cantidadKids }}</p>
                                 </li>
 
                                 {% if reserva.detallesReserva.totalReserva == 0 %}
@@ -49,30 +48,30 @@
                                     </li>
                                     <li>
                                         <div class="button">
-                                            <a href="{{ path('reservas') }}" class="btn-tertiary me-3">Ver mis reservas</a>
+                                            <a href="{{ path('reservas') }}" class="btn-tertiary me-3">{{ 'See my bookings'|trans }}</a>
                                         </div>
                                     </li>
                                 {% else %}
                                     <li>
                                         <p class="card-title">
-                                            Total: {{ reserva.detallesReserva.totalReserva/100|number_format(2, '.') }} €
+                                            Total: {{ (reserva.detallesReserva.totalReserva/100)|number_format(2, '.') }} €
                                         </p>
                                     </li>
                                     {% if tour.precio != 0 %}
                                         <div class="button">
-                                            <a href="#" class="btn-primary me-3">Proceder al pago</a>
+                                            <a href="#" class="btn-primary me-3">{{ 'Proceed to payment'|trans }}</a>
                                         </div>
                                     {% endif %}
                                 {% endif %}
                             {% else %}
                                 <li>
-                                    <p class="card-title">Detalles de reserva no disponibles.</p>
+                                    <p class="card-title">{{ 'Booking details not available.'|trans }}</p>
                                 </li>
                             {% endif %}
                         </ul>
                     </div>
                 {% else %}
-                    <p>No hay reservas disponibles.</p>
+                    <p>{{ 'No bookings available.'|trans }}</p>
                 {% endif %}
             </div>
         {% endfor %}

@@ -196,7 +196,7 @@ class AdminController extends AbstractController
     return $this->render("eventos/guia.html.twig", [
         'data' => $data,
         "eventos" => $events,
-        "evento" => $event,
+        "evento" => count($events) > 0 ? $events[0] : null,
         "tours" => $tours,
         "visitas" => $visitas,
         'categoria' => $categoria,
@@ -257,12 +257,7 @@ class AdminController extends AbstractController
         $evento->setCerrado(true);
         $em->persist($evento);
 
-        // $imagenes = $this->em->getRepository(Imagenes::class)->findBy(['evento' => null]);
-
-        // foreach ($imagenes as $imagen) {
-        //     $evento->addImagen($imagen);
-        //     $imagen->setEvento($evento);
-        // }
+        $this->eliminarEventosVacios($eventoRepository, $reservaRepository);
 
         $em->flush();
     
@@ -270,6 +265,20 @@ class AdminController extends AbstractController
         
         return new JsonResponse(['success' => 'Detalles guardados correctamente'], 200);
 
+    }
+
+    private function eliminarEventosVacios(EventoRepository $eventoRepository, ReservaRepository $reservaRepository) {
+        $eventos = $eventoRepository->findAll();
+    
+        foreach ($eventos as $evento) {
+            $reservas = $reservaRepository->findBy(['evento' => $evento]);
+    
+            if (count($reservas) === 0) {
+                $this->em->remove($evento);
+            }
+        }
+    
+        $this->em->flush();
     }
 
 //     #[Route('/admin/guia/cambiar-estado/{id}', name: 'cambiar_estado_evento', methods: ['POST'])]

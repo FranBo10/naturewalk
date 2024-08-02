@@ -75,6 +75,7 @@ body %}
 
           <div class="container-detalles mb-5">
             <h2 class="my-5">Añade una foto de la visita</h2>
+            {% if evento is not null %}
             {{
               form_start(imagenesForm, {
                 attr: {
@@ -97,8 +98,12 @@ body %}
               {{ button_label|default('Publicar foto') }}
             </button>
             {{ form_end(imagenesForm) }}
-          </div>
 
+            {% else %}
+            <p>El evento no está definido.</p>
+            {% endif %}
+          </div>
+          {% if evento is not null %}
           <form
             action="{{ path('store', { id: evento.id }) }}"
             id="formularioEventos"
@@ -185,6 +190,11 @@ body %}
               </button>
             </div>
           </form>
+          {% else %}
+  
+    <h1>No hay eventos</h1>
+  
+{% endif %}
         </div>
       </div>
     </div>
@@ -231,8 +241,8 @@ body %}
                 });
 
                 let eventData = {{ data|raw }};
-
-                let events = eventData.map(event => ({
+                
+                let events = eventData.filter(event => event.reservas && event.reservas.length > 0).map(event => ({
                   id: event.id,
                   title: event.cerrado ? event.titulo + '🔒' : event.titulo,
                   start: moment(event.inicio, "DD/MM/YYYY").format('YYYY-MM-DD'),

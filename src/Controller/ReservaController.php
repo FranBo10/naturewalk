@@ -23,6 +23,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ReservaController extends AbstractController
@@ -38,7 +39,7 @@ class ReservaController extends AbstractController
         $this->rs = $rs;
     }
 
-    #[Route('/reserva/{id}', name: 'show')]
+    #[Route('/reserva/{id}/{_locale}', name: 'show')]
     public function show(
         Request $request,
         EntityManagerInterface $em,
@@ -47,7 +48,7 @@ class ReservaController extends AbstractController
         EventoService $es,
         MailerService $mailerService,
         BlogCategoriaRepository $blogCategoriaRepository,
-        EventoRepository $eventoRepository
+        EventoRepository $eventoRepository, TranslatorInterface $translator
     ) {
 
         if (!$tour) {
@@ -63,6 +64,8 @@ class ReservaController extends AbstractController
         }
 
         $categoria = $blogCategoriaRepository->findOneBy(['id' => $categoriaId]);
+        
+        $locale = $request->getLocale();
 
 
         $detallesReserva = new DetallesReserva;
@@ -111,7 +114,8 @@ class ReservaController extends AbstractController
                 $this->addFlash('danger', $mensaje);
 
                 return $this->redirectToRoute('show', [
-                    'id' => $tour->getId()
+                    'id' => $tour->getId(), 
+                    '_locale' => $locale
                 ]);
             }
             
@@ -119,7 +123,8 @@ class ReservaController extends AbstractController
         if ($evento && $evento->isCerrado()) {
             $mensaje = $translator->trans('The event is closed and cannot receive further reservations');
             $this->addFlash('danger', $mensaje);
-            return $this->redirectToRoute('show', ['id' => $tour->getId()]);
+            return $this->redirectToRoute('show', ['id' => $tour->getId(), 
+            '_locale' => $locale]);
         }
 
             $horarios = $tour->getHorarios();
@@ -135,7 +140,8 @@ class ReservaController extends AbstractController
                             $mensaje = $translator->trans('Ups! We do not have a visit this day for this tour, please modify the booking date');
 
                             $this->addFlash('danger', $mensaje);
-                            return $this->redirectToRoute('show', ['id' => $tour->getId()]);
+                            return $this->redirectToRoute('show', ['id' => $tour->getId(), 
+                            '_locale' => $locale]);
                         }
                     }
                 }
@@ -152,7 +158,8 @@ class ReservaController extends AbstractController
                 $this->addFlash('danger', $mensaje);
 
                 return $this->redirectToRoute('show', [
-                    'id' => $tour->getId()
+                    'id' => $tour->getId(), 
+                    '_locale' => $locale
                 ]);
             }
 
@@ -171,7 +178,8 @@ class ReservaController extends AbstractController
                     $mensaje = $translator->trans("We inform you that there are only " .  $cantidadRestante . " places left free for today's activity");
 
                     $this->addFlash('danger', $mensaje);
-                    return $this->redirectToRoute('show', ['id' => $tour->getId()]);
+                    return $this->redirectToRoute('show', ['id' => $tour->getId(), 
+                    '_locale' => $locale]);
                 }
             }
 
@@ -208,7 +216,8 @@ class ReservaController extends AbstractController
 
             $this->addFlash('success', $mensaje);
 
-            return $this->redirectToRoute('validar_reserva', ['id' => $reserva->getId()]);
+            return $this->redirectToRoute('validar_reserva', ['id' => $reserva->getId(), 
+            '_locale' => $locale]);
         }
 
         return $this->render('reserva/show.html.twig', [
@@ -220,12 +229,13 @@ class ReservaController extends AbstractController
             'totalReserva' => $totalReserva,
             'reserva' => $reserva,
             'cantidadAdultos' => $cantidadAdultos,
-            'id' => $detallesReserva->getId()
+            'id' => $detallesReserva->getId(),
+            '_locale' => $locale
         ]);
     }
 
 
-    #[Route('edit_reserva/{id}', name: 'editar', methods: ['GET', 'POST'])]
+    #[Route('edit_reserva/{id}/{_locale}', name: 'editar', methods: ['GET', 'POST'])]
     public function editar(
         Request $request,
         EntityManagerInterface $em,
@@ -233,7 +243,7 @@ class ReservaController extends AbstractController
         Reserva $reserva,
         MailerService $mailerService,
         TourRepository $tourRepository,
-        BlogCategoriaRepository $blogCategoriaRepository
+        BlogCategoriaRepository $blogCategoriaRepository, TranslatorInterface $translator
     ): Response {
         $detallesReserva = $reserva->getDetallesReserva();
         $tour = $reserva->getTours()->first();
@@ -241,6 +251,8 @@ class ReservaController extends AbstractController
         $tours = $tourRepository->findAll();
 
         $user = $this->getUser();
+        
+        $locale = $request->getLocale();
 
         $categorias = $blogCategoriaRepository->findAll();
 
@@ -280,7 +292,8 @@ class ReservaController extends AbstractController
                 $this->addFlash('danger', $mensaje);
 
                 return $this->redirectToRoute('editar', [
-                    'id' => $reserva->getId()
+                    'id' => $reserva->getId(), 
+                    '_locale' => $locale
                 ]);
             }
 
@@ -321,7 +334,8 @@ class ReservaController extends AbstractController
 
             $this->addFlash('success', $mensaje);
 
-            return $this->redirectToRoute('validar_reserva', ['id' => $reserva->getId()]);
+            return $this->redirectToRoute('validar_reserva', ['id' => $reserva->getId(), 
+            '_locale' => $locale]);
         }
 
         return $this->render('reserva/editar.html.twig', [
@@ -333,14 +347,16 @@ class ReservaController extends AbstractController
             'totalReserva' => $totalReserva,
             'reserva' => $reserva,
             'cantidadAdultos' => $cantidadAdultos,
-            'categoria' => $categoria,
+            'categoria' => $categoria, 
+            '_locale' => $locale
         ]);
     }
 
-    #[Route('delete_reserva/{id}', name: 'delete_reserva')]
-    public function deleteReserva($id)
+    #[Route('delete_reserva/{id}/{_locale}', name: 'delete_reserva')]
+    public function deleteReserva($id, TranslatorInterface $translator, Request $request)
     {
         $reserva = $this->em->getRepository(Reserva::class)->find($id);
+        $locale = $request->getLocale();
 
         if (!$reserva) {
             throw $this->createNotFoundException('No se encontró la reserva con el id ' . $id);
@@ -354,11 +370,14 @@ class ReservaController extends AbstractController
         $this->addFlash('info', $mensaje);
 
         // Aquí puedes redirigir a una página adecuada después de eliminar la reserva
-        return $this->redirectToRoute('reservas');
+        return $this->redirectToRoute('reservas', [
+         '_locale' => $locale   
+        ] 
+        );
     }
 
 
-    #[Route('/validar_reserva/{id}', name: 'validar_reserva')]
+    #[Route('/validar_reserva/{id}/{_locale}', name: 'validar_reserva')]
     public function validarReserva(
         $id,
         ReservaRepository $repo,
@@ -368,6 +387,7 @@ class ReservaController extends AbstractController
     ) {
         // Obtener la reserva específica del usuario (la que acaba de crear)
         $reserva = $repo->find($id);
+        $locale = $request->getLocale();
 
         $categorias = $blogCategoriaRepository->findAll();
 
@@ -401,6 +421,7 @@ class ReservaController extends AbstractController
             'reserva' => $reserva,
             'tours' => $tours,
             'categoria' => $categoria,
+            '_locale' => $locale,
             'userForm' => $form->createView()
         ]);
     }

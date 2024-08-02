@@ -1,83 +1,71 @@
-{% extends 'base.html.twig' %} {% block title %} Edit booking {% endblock %} {%
-  block body %}
-  <div id="main-container" class="container-fluid my-3">
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'Edit booking'|trans }}{% endblock %}
+
+{% block body %}
+<div id="main-container" class="container-fluid my-5">
     {% for message in app.flashes('danger') %}
-    <div class="alert alert-danger text-center w-50 mx-auto my-2">
-      <p>{{ message }}</p>
-    </div>
-    {% endfor %}
-    <section class="table__section">
-      <table class="table">
-        <thead class="table__head">
-          <tr>
-            <th class="align-middle">Tour</th>
-            <th class="align-middle">Price</th>
-            <th class="align-middle">Adults</th>
-            <th class="align-middle">Kids</th>
-            <th class="align-middle">Booking date</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="text-center align-middle">
-              <img
-                src="{{ asset('uploads/images/' ~ tour.imagen) }}"
-                alt="{{ tour.titulo }}"
-                style="object-fit: cover"
-                width="100%"
-                height="100"
-              />
-              <div class="table__titulo">
-                {{ tour.titulo | title }} : {{ tour.horaInicio|date("H:i") }} h -
-                {{ tour.horaFin|date("H:i") }} h
-              </div>
-            </td>
-            <td class="text-center align-middle">
-              {% if tour.precio == 0 %}
-              <p><span>Free Tour</span></p>
-              {% else %}
-              <p>{{ tour.precio/100|number_format(2, '.') }} €</p>
-              {% endif %}
-            </td>
-  
-            {% if app.user %}
-            {{
-              form_start(form, { attr: { novalidate: "novalidate" } })
-            }}
-            <td class="text-center align-middle">
-              {{ form_row(form.cantidad_adultos) }}
-            </td>
-  
-            <td class="text-center align-middle">
-              {{ form_row(form.cantidad_kids) }}
-            </td>
-            <td class="text-center align-middle">
-              {{ form_row(form.fecha_evento, {'attr': {'name': 'fechaEvento'}}) }}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-  
-    <div class="row col-12">
-      <div class="col-6">
-        <div class="buttons">
-          <a href="{{ path('home') }}" class="btn-secondary me-3">
-            Clear Cart
-          </a>
-          <a href="{{ path('home') }}" class="btn-tertiary">More tours...</a>
+        <div class="alert alert-danger text-center w-50 mx-auto my-2">
+            <p>{{ message }}</p>
         </div>
-      </div>
-      <div class="col-6 text-end">
-        <button type="submit" class="btn-primary me-3">Modify reservation</button>
-        {{ form_end(form) }}
-      </div>
-    </div>
-    <!-- Fin del bloque de formulario de datos personales -->
+    {% endfor %}
+        <h2 class="titulo__reservas text-center w-100 mb-3">{{ 'Edit booking'|trans }}</h2>
+       {% if app.user %}
+        
+                <div class="reserva-container container-fluid">
+                    <div class="image-container">
+                        <img src="{{ asset('uploads/images/' ~ tour.imagen) }}" alt="{{ tour.titulo }}" width="350px" height="280px" />
+                    </div>
+                    <div class="detalles-reserva">
+                        <ul>
+                            <h3>{{ tour.titulo | title }} : {{ tour.horaInicio|date("H:i") }} h - {{ tour.horaFin|date("H:i") }} h</h3>
+                            <li>
+                                {% if tour.precio == 0 %}
+                                    <p><span>{{ 'Price'|trans }} : {{ 'Free Tour'|trans }}</span></p>
+                                {% else %}
+                                    <p>{{ tour.precio/100|number_format(2, '.') }} €</p>
+                                {% endif %}
+                            </li>
+                            {{ form_start(form, { attr: { novalidate: "novalidate" } }) }}
+                            <li>
+                                {{ form_label(form.cantidad_adultos, 'Select number of adults'|trans) }}
+                                {{ form_widget(form.cantidad_adultos, {'attr': {'class': 'task_field'}}) }}
+                            </li>
+                            <li>
+                                {{ form_label(form.cantidad_kids, 'Select number of kids'|trans) }}
+                                {{ form_widget(form.cantidad_kids, {'attr': {'class': 'task_field'}}) }}
+                            </li>
+                            <li>
+                                {{ form_label(form.fecha_evento, 'Select a date'|trans) }}
+                                {{ form_widget(form.fecha_evento, {
+                                    'attr': {
+                                        'class': 'task_field datepicker',
+                                        'placeholder': 'Select a date'|trans,
+                                    }
+                                }) }}
+                            </li>
+                            <li>
+                                <div class="buttons">
+                                    <div class="left-buttons">
+                                        <a href="{{ path('delete_reserva', { id: reserva.id }) }}" class="btn-danger">{{ 'Cancel / Delete booking'|trans }}</a>
+                                    <a href="{{ path('home') }}" class="btn-tertiary my-3">{{ 'More tours...'|trans }}</a>
+                                </div>
+                                <div class="right-button">
+                                    <button type="submit" class="btn-primary">{{ 'Modify reservation'|trans }}</button>
+                                </div>
+                                    
+                                    
+                                </div>
+                            </li>
+                            {{ form_end(form) }}
+                        </ul>
+                    </div>
+                </div>
     {% else %}
-    <p>No booking registered yet</p>
+        <div class="text-center mt-5">
+            <h4>{{ 'No booking registered yet'|trans }}</h4>
+            <a href="{{ path('home') }}" class="btn-primary">{{ 'Back to homepage'|trans }}</a>
+        </div>
     {% endif %}
-  </div>
-  {% endblock %}
-  
+</div>
+{% endblock %}

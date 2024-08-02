@@ -14,6 +14,7 @@ use App\Repository\TourRepository;
 use App\Repository\UserRepository;
 use App\Service\ComentarioService;
 use App\Form\DetallesEventoFormType;
+use App\Repository\EventoRepository;
 use App\Repository\ReservaRepository;
 use App\Repository\ComentarioRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -23,6 +24,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -35,6 +37,15 @@ class AppController extends AbstractController
     public function __construct(EntityManagerInterface $em)
     {
         $this->em = $em;
+    }
+
+    #[Route('/', name: 'default')]
+    public function default(Request $request): RedirectResponse
+    {
+
+        $locale = $request->getLocale();
+        // Redirigir a la ruta home con el idioma predeterminado
+        return $this->redirectToRoute('home', ['_locale' => $locale]);
     }
 
     #[Route('/{_locale}', name: 'home')]
@@ -58,13 +69,6 @@ class AppController extends AbstractController
             '_locale' => $locale
         ]);
     }
-
-//     #[Route('/', name: 'default')]
-// public function default(): RedirectResponse
-// {
-//     // Redirigir a la ruta home con el idioma predeterminado
-//     return $this->redirectToRoute('home', ['_locale' => 'en']);
-// }
 
 
     #[Route('/tour/{id}/{_locale}', name: 'tour', methods: ['GET', 'POST'])]
@@ -245,17 +249,18 @@ class AppController extends AbstractController
     }
 
     #[IsGranted("ROLE_USER")]
-    #[Route('/reservas', name: 'reservas')]
+    #[Route('/reservas/{_locale}', name: 'reservas')]
     public function reserva(
         Request $request,
         ReservaRepository $reservaRepository,
         DetallesReservaRepository $detallesReservaRepository,
+        EventoRepository $eventoRepository,
         TourRepository $repo,
         BlogCategoriaRepository $blogCategoriaRepository
     ): Response {
-
-        $reservas = $reservaRepository->findByEventDateDesc();
-        $detallesReservas = $detallesReservaRepository->findAll();
+        $user = $this->getUser();
+        $eventos = $eventoRepository->findByUserOrderedByFechaEventoDesc($user);
+        $reservas = $reservaRepository->findAll();
 
         $tours = $repo->findAll();
         $categorias = $blogCategoriaRepository->findAll();
@@ -265,10 +270,9 @@ class AppController extends AbstractController
         }
         $categoria = $blogCategoriaRepository->findOneBy(['id' => $categoriaId]);
 
-
         return $this->render('cliente/reservas.html.twig', [
+            'eventos' => $eventos,
             'reservas' => $reservas,
-            'detallesReservas' => $detallesReservas,
             'tours' => $tours,
             'categoria' => $categoria
         ]);
