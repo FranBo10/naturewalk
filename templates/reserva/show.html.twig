@@ -45,14 +45,19 @@
                     </li>
                     <li>
                         <div class="buttons">
+                            <a href="{{ path('home') }}" class="btn-tertiary my-3">{{ 'More tours...'|trans }}</a>
                             {% if app.user %}
+                            <div class="left-buttons">
                                 <button type="submit" class="btn-primary">{{ 'Confirm booking'|trans }}</button>
+                            </div>
                             {% else %}
+                            <div class="left-buttons">
                                 <a href="{{ path('app_login') }}" class="btn-primary-card">
                                     {{ 'Book now'|trans }}
                                 </a>
+                            </div>
                             {% endif %}
-                            <a href="{{ path('home') }}" class="btn-tertiary my-3">{{ 'More tours...'|trans }}</a>
+                            
                         </div>
                     </li>
                     {{ form_end(form) }}

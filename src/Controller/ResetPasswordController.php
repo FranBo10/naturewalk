@@ -188,7 +188,7 @@ class ResetPasswordController extends AbstractController
         }
 
         $email = (new TemplatedEmail())
-            ->from(new Address('reserva@freetourgo.com', 'Cambiar contraseña'))
+            ->from(new Address('info@naturewalk', 'Cambiar contraseña'))
             ->to($user->getEmail())
             ->subject('Cambio de contraseña ')
             ->htmlTemplate('reset_password/email.html.twig')

@@ -171,7 +171,7 @@ class ReservaController extends AbstractController
                 $cantidadEvento = $evento->getCantidad();
                 $cantidadTotal = $cantidadEvento + $cantidad;
                 $stock = $tour->getStock();
-                $cantidadRestante = $stock - $cantidadEvento;
+                $cantidadRestante = ($stock - $cantidadEvento) - 1;
 
                 if ($cantidadTotal >= $tour->getStock()) {
 
@@ -201,7 +201,7 @@ class ReservaController extends AbstractController
 
             //* Enviar e-mail de notificación al administrador
             $mailerService->send(
-                'reserva@freetourgo.com',
+                'info@naturewalk.com',
                 'Nueva reserva realizada',
                 'notification_nueva_reserva_email.html.twig',
                 [
@@ -317,7 +317,7 @@ class ReservaController extends AbstractController
 
             //* Enviar e-mail de notificación al administrador
             $mailerService->send(
-                'reserva@freetourgo.com',
+                'info@naturewalk.com',
                 'Modificacion reserva realizada',
                 'notification_modification_reserva_email.html.twig',
                 [

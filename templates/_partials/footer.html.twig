@@ -17,14 +17,19 @@
       </ul>
     </div>
     <div class="copyright">
-      <p>All rights reserved 2023-2024 | <a href="">NatureWalk</a></p>
-      <a href="">Terms and Conditions</a>
+      <p>
+        {{ "All rights reserved 2023-2024" | trans }} |
+        <a href="">NatureWalk</a>
+      </p>
+      <a href="">{{ "Terms and Conditions" | trans }}</a>
     </div>
   </div>
   <div class="footer_col col-md-4 col-6">
     <div class="footer-links">
       <ul>
-        <li><a href="">Who are we ?</a></li>
+        <li>
+          <a href="">{{ "Who are we?" | trans }}</a>
+        </li>
         {% for item in tours %} {% if item.isEstado %}
         <li>
           <a href="{{ path('tour', { id: item.id }) }}">
@@ -37,13 +42,18 @@
   </div>
   <div class="footer_col_payment col-md-3 col-6">
     <div class="order-tracking">
-      <h4>Check the status of your reservation</h4>
-      <input type="text" name="name" id="name" placeholder="Booking N°." />
+      <h4>{{ "Check the status of your reservation" | trans }}</h4>
+      <input
+        type="text"
+        name="name"
+        id="name"
+        placeholder="{{ 'Booking N°.' | trans }}"
+      />
       <input type="email" name="email" placeholder="E-mail" />
       <button class="btn-primary" type="submit">Check</button>
     </div>
     <div class="payment">
-      <p>Payment method</p>
+      <p>{{ "Payment method" | trans }}</p>
       <ul>
         <li><i class="bi bi-credit-card-2-back-fill"></i></li>
         <li><i class="bi bi-paypal"></i></li>

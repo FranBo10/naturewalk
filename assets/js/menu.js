@@ -8,15 +8,6 @@ const mobileLinks = document.querySelectorAll(".menu-mobile li");
 
 const languageToggle = document.querySelectorAll('#navigation .language-toggle');
 
-console.log(navBar1);
-console.log(menuBtn);
-console.log(closeBtn);
-console.log(menuMobile);
-console.log(navBarElem);
-console.log(navBarUserName);
-console.log(mobileLinks);
-console.log(languageToggle);
-
 languageToggle.forEach(toggle => {
   toggle.addEventListener('click', function(event) {
     event.preventDefault();

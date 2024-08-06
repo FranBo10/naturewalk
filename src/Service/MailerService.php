@@ -23,7 +23,7 @@ class MailerService
     public function send($to, $subject, $templateTwig, $context): void
     {
         $email = (new TemplatedEmail())
-            ->from(new Address('reserva@freetourgo.com', 'Reserva'))
+            ->from(new Address('info@naturewalk', 'Reserva'))
             ->to($to)
             ->subject($subject)
             ->htmlTemplate("mails/$templateTwig")

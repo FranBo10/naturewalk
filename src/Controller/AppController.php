@@ -19,6 +19,7 @@ use App\Repository\ReservaRepository;
 use App\Repository\ComentarioRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\BlogCategoriaRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use App\Repository\DetallesReservaRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -72,7 +73,7 @@ class AppController extends AbstractController
 
 
     #[Route('/tour/{id}/{_locale}', name: 'tour', methods: ['GET', 'POST'])]
-    public function tour($id, TourRepository $repo, ComentarioService $comentarioService, ComentarioRepository $comentarioRepository, Request $request, BlogCategoriaRepository $blogCategoriaRepository, TranslatorInterface $translator): Response
+    public function tour($id, TourRepository $repo, ComentarioService $comentarioService, ComentarioRepository $comentarioRepository, Request $request, BlogCategoriaRepository $blogCategoriaRepository, TranslatorInterface $translator, PaginatorInterface $paginator): Response
     {
 
         $tour = $this->em->getRepository(Tour::class)->find($id);
@@ -80,6 +81,14 @@ class AppController extends AbstractController
         $user = $this->getUser();
         $categorias = $blogCategoriaRepository->findAll();
         $locale = $request->getLocale();
+
+        $descripcionLarga = $tour->getDescripcionLarga();
+        $descripcionLargaTexto = strip_tags($descripcionLarga);
+
+        // Asigna una clave de traducción para la descripción larga
+        $descripcionLargaClave = 'tour_description_' . $tour->getId();
+
+        // $descripcionLargaTrad = $translator->trans($descripcionLargaTexto);
 
         foreach ($categorias as $categoria) {
             $categoriaId = $categoria->getId();
@@ -96,7 +105,11 @@ class AppController extends AbstractController
         $sliders = $this->em->getRepository(Slider::class)->findBy(['tour' => $tour]);
 
         $comentario = new Comentario();
-        $comentarios = $comentarioRepository->findComentarios($tour);
+        $data = $comentarioRepository->findComentarios($tour);
+
+        $comentarios = $paginator->paginate($data, $request->query->getInt('page', 1), 4);
+
+
 
         $form = $this->createForm(ComentarioFormType::class, $comentario);
         $form->handleRequest($request);
@@ -127,6 +140,8 @@ class AppController extends AbstractController
             'sliders' => $sliders,
             'categoria' => $categoria,
             'comentarios' => $comentarios,
+            'descripcionLarga' => $descripcionLargaTexto,
+            'descripcionLargaClave' => $descripcionLargaClave,
             'form' => $form->createView(),
         ]);
     }

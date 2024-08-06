@@ -1,23 +1,21 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}
-    {% for slider in sliders %}
-        {{ slider.titulo }}
-    {% endfor %}
-{% endblock %}
-
-{% block nav %}
-    {% include '_partials/_menu_nav.html.twig' %}
-{% endblock %}
-
-{% block body %}
+{% extends 'base.html.twig' %} {% block title %} {% for slider in sliders %}
+{{ slider.titulo }}
+{% endfor %} {% endblock %} {% block nav %} {% include
+'_partials/_menu_nav.html.twig' %} {% endblock %} {% block body %}
 
 <div class="carousel-container">
-  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  <div
+    id="carouselExampleIndicators"
+    class="carousel slide"
+    data-bs-ride="carousel"
+  >
     <div class="carousel-inner">
       {% for slider in sliders %}
       <div class="carousel-item{% if loop.first %} active{% endif %}">
-        <div class="card-image-slider" style="background-image: linear-gradient(rgba(0, 0, 0, 0.416), transparent), url('{{ asset('uploads/images/' ~ slider.imagen) }}');">
+        <div
+          class="card-image-slider"
+          style="background-image: linear-gradient(rgba(0, 0, 0, 0.416), transparent), url('{{ asset('uploads/images/' ~ slider.imagen) }}');"
+        >
           <div class="content-slider">
             <div class="content-slider-text">
               <h3 class="animation content-slider-title">
@@ -29,7 +27,7 @@
             </div>
             <div class="content-slider-button">
               <a href="{{ path('show', { id: tour.id }) }}" class="btn-primary">
-                {{ 'Book now'|trans }}
+                {{ "Book now" | trans }}
               </a>
             </div>
           </div>
@@ -69,12 +67,24 @@
 <div class="menu__detalle-tour">
   <div class="detalle-tour">
     <ul>
-      <li><a href="#descripcion" id="selected">{{ 'Description'|trans }}</a></li>
-      <li><a href="#precio">{{ 'Prices'|trans }}</a></li>
-      <li><a href="#detalles">{{ 'Details'|trans }}</a></li>
-      <li><a href="#cancelacion">{{ 'Cancelations'|trans }}</a></li>
-      <li><a href="#encuentro">{{ 'Meeting point'|trans }}</a></li>
-      <li><a href="#opiniones">{{ 'Opinions'|trans }}</a></li>
+      <li>
+        <a href="#descripcion" id="selected">{{ "Description" | trans }}</a>
+      </li>
+      <li>
+        <a href="#precio">{{ "Prices" | trans }}</a>
+      </li>
+      <li>
+        <a href="#detalles">{{ "Details" | trans }}</a>
+      </li>
+      <li>
+        <a href="#cancelacion">{{ "Cancelations" | trans }}</a>
+      </li>
+      <li>
+        <a href="#encuentro">{{ "Meeting point" | trans }}</a>
+      </li>
+      <li>
+        <a href="#opiniones">{{ "Opinions" | trans }}</a>
+      </li>
     </ul>
   </div>
 </div>
@@ -83,28 +93,37 @@
   <div id="descripcion" class="container-detalles">
     <h3>{{ tour.titulo }}</h3>
     <div class="detalle-descripcion">
-      <p>{{ tour.descripcionCorta | raw }}</p>
+      <p>{{ tour.descripcionCorta | trans | raw }}</p>
       <div class="descripcion-hidden">
-        <p>{{ tour.descripcionLarga | raw }}</p>
+        <p>{{ descripcionLargaClave | trans }}</p>
       </div>
       <div class="descripcion-container">
-        <a href="#" id="mostrar-link" class="btn-description">{{ 'See full description'|trans }}</a>
+        <a href="#" id="mostrar-link" class="btn-description">{{
+          "See full description" | trans
+        }}</a>
       </div>
-      <a href="#" id="ocultar-link" class="descripcion-hidden">{{ 'Hide description'|trans }}</a>
+      <a href="#" id="ocultar-link" class="descripcion-hidden">{{
+        "Hide description" | trans
+      }}</a>
     </div>
     <hr />
     <div id="precio" class="detalle-precio">
-      <h3>{{ 'Price'|trans }}</h3>
-      <p>{{ 'Free tours do not have a fixed price. Each person values the work of the guide and, at the end of the tour, he delivers the amount he considers to his will according to their satisfaction.'|trans }}</p>
+      <h3>{{ "Price" | trans }}</h3>
+      <p>
+        {{
+          "Free tours do not have a fixed price. Each person values the work of the guide and, at the end of the tour, he delivers the amount he considers to his will according to their satisfaction."
+            | trans
+        }}
+      </p>
     </div>
     <hr />
     <div id="detalles" class="detalle-general">
-      <h3>{{ 'Details'|trans }}</h3>
+      <h3>{{ "Details" | trans }}</h3>
       <div>
         <div class="detalle-duracion">
           <div class="detalle-titulo">
             <i class="fas fa-clock"></i>
-            <h4>{{ 'Duration'|trans }}</h4>
+            <h4>{{ "Duration" | trans }}</h4>
           </div>
           <p>{{ tour.duracion }}</p>
         </div>
@@ -112,122 +131,167 @@
         <div class="detalle-idioma">
           <div class="detalle-titulo">
             <i class="fas fa-comment"></i>
-            <h4>{{ 'Language'|trans }}</h4>
+            <h4>{{ "Language" | trans }}</h4>
           </div>
-          <p>{{ 'The activity is carried out with an English-speaking guide'|trans }}</p>
+          <p>
+            {{
+              "The activity is carried out with an English-speaking guide"
+                | trans
+            }}
+          </p>
         </div>
         <hr />
         <div class="detalle-incluido">
           <div class="detalle-titulo">
             <i class="fas fa-check"></i>
-            <h4>{{ 'Included'|trans }}</h4>
+            <h4>{{ "Included" | trans }}</h4>
           </div>
-          <p>{{ 'English-speaking guide'|trans }}</p>
+          <p>{{ "English-speaking guide" | trans }}</p>
         </div>
         <hr />
         <div class="detalle-noincluido">
           <div class="detalle-titulo">
             <i class="fas fa-ban"></i>
-            <h4>{{ 'Not incluided'|trans }}</h4>
+            <h4>{{ "Not incluided" | trans }}</h4>
           </div>
-          <p>{{ 'Tips'|trans }}</p>
+          <p>{{ "Tips" | trans }}</p>
         </div>
         <hr />
         <div class="detalle-reservar">
           <div class="detalle-titulo">
             <i class="fas fa-calendar"></i>
-            <h4>{{ 'When to book ?'|trans }}</h4>
+            <h4>{{ "When to book ?" | trans }}</h4>
           </div>
-          <p>{{ 'You can book up to 30 minutes before the tour starts'|trans }}</p>
+          <p>
+            {{ "You can book up to 30 minutes before the tour starts" | trans }}
+          </p>
         </div>
         <hr />
         <div class="detalle-accesibilidad">
           <div class="detalle-titulo">
             <i class="fas fa-wheelchair"></i>
-            <h4>{{ 'Accesibility'|trans }}</h4>
+            <h4>{{ "Accesibility" | trans }}</h4>
           </div>
-          <p>{{ 'Not wheelchair accessible'|trans }}</p>
+          <p>{{ "Not wheelchair accessible" | trans }}</p>
         </div>
         <hr />
         <div class="detalle-mascotas">
           <div class="detalle-titulo">
             <i class="fas fa-paw"></i>
-            <h4>{{ 'Pets'|trans }}</h4>
+            <h4>{{ "Pets" | trans }}</h4>
           </div>
-          <p>{{ 'Allowed'|trans }}</p>
+          <p>{{ "Allowed" | trans }}</p>
         </div>
         <hr />
         <div class="detalle-faq">
           <div class="detalle-titulo">
             <i class="fas fa-question"></i>
-            <h4>{{ 'Frequently asked questions'|trans }}</h4>
+            <h4>{{ "Frequently asked questions" | trans }}</h4>
           </div>
         </div>
         <div class="detalle-faq-2">
           <ul>
             <li>
-              <p><strong>{{ 'How to make the reservation ?'|trans }}</strong></p>
-              <p>{{ 'For booking the tour of'|trans }}  {{ tour.titulo }}   {{' , choose the desired date and complete the form, indicating the number of participants. Confirmation is immediate.'|trans }}</p>
-              
+              <p>
+                <strong>{{ "How to make the reservation ?" | trans }}</strong>
+              </p>
+              <p>
+                {{ "For booking the tour of" | trans }} {{ tour.titulo }}
+                {{
+                  " , choose the desired date and complete the form, indicating the number of participants. Confirmation is immediate."
+                    | trans
+                }}
+              </p>
             </li>
             <li>
-              <p><strong>{{ 'Is a minimum number of participants needed ?'|trans }}</strong></p>
-              <p>{{ 'The minimum number of participants is one person, so if it\'s your case, sign up and enjoy a pleasant time'|trans }}</p>
+              <p>
+                <strong>{{
+                  "Is a minimum number of participants needed ?" | trans
+                }}</strong>
+              </p>
+              <p>
+                {{
+                  "The minimum number of participants is one person, so if it's your case, sign up and enjoy a pleasant time"
+                    | trans
+                }}
+              </p>
             </li>
             <li>
-              <p>{{ 'For any other doubt,'|trans }} {# <a href="{{ path('contacto') }}">contacta con nosotros</a> #}</p>
+              <p>
+                {{ "For any other doubt," | trans }} {#
+                <a href="{{ path('contacto') }}">contacta con nosotros</a> #}
+              </p>
             </li>
           </ul>
         </div>
         <hr />
         <div id="cancelacion" class="detalle-cancelacion">
-          <h3 class="titulo-cancelacion">{{ 'Free cancelation'|trans }}</h3>
-          <p>{{ 'If you will not be able to attend the tour, please cancel the reservation, otherwise, the guide will be waiting for you.'|trans }}</p>
+          <h3 class="titulo-cancelacion">{{ "Free cancelation" | trans }}</h3>
+          <p>
+            {{
+              "If you will not be able to attend the tour, please cancel the reservation, otherwise, the guide will be waiting for you."
+                | trans
+            }}
+          </p>
         </div>
         <hr />
         <div id="encuentro" class="detalle-encuentro">
           <div class="ubicacion">
             <div class="detalle-location">
               <div class="meeting-point">
-                <h3>{{ 'Meeting point'|trans }}</h3>
+                <h3>{{ "Meeting point" | trans }}</h3>
               </div>
               <div class="titulo-ubicacion">
                 <i class="fas fa-map-marker-alt"></i>
                 <p>{{ tour.comienzo }}</p>
               </div>
               <div class="mapa">
-                <iframe src="{{ tour.mapaComienzo }}" width="400" height="300" style="border: 0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe
+                  src="{{ tour.mapaComienzo }}"
+                  width="400"
+                  height="300"
+                  style="border: 0"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
               </div>
             </div>
             <div class="detalle-location">
               <div class="meeting-point">
-                <h3>{{ 'Second meeting point'|trans }}</h3>
+                <h3>{{ "Second meeting point" | trans }}</h3>
               </div>
               <div class="titulo-ubicacion">
                 <i class="fas fa-map-marker-alt"></i>
                 <p>{{ tour.final }}</p>
               </div>
               <div class="mapa">
-                <iframe src="{{ tour.mapaFinal }}" width="400" height="300" style="border: 0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe
+                  src="{{ tour.mapaFinal }}"
+                  width="400"
+                  height="300"
+                  style="border: 0"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
               </div>
             </div>
           </div>
         </div>
-        {% for item in tours %}
-          {% if item.id == tour.id %}
-          <div id="opiniones" class="container-detalles-reserva my-3">
-            {% if app.user %}
-            <a href="{{ path('show', { id: item.id }) }}" class="btn-primary">
-              {{ 'Book now'|trans }}
-            </a>
-            {% else %}
-            <a href="{{ path('app_login') }}" class="btn-primary-card">
-              {{ 'Book now'|trans }}
-            </a>
-            {% endif %}
-          </div>
+        {% for item in tours %} {% if item.id == tour.id %}
+        <div id="opiniones" class="container-detalles-reserva my-3">
+          {% if app.user %}
+          <a href="{{ path('show', { id: item.id }) }}" class="btn-primary">
+            {{ "Book now" | trans }}
+          </a>
+          {% else %}
+          <a href="{{ path('app_login') }}" class="btn-primary-card">
+            {{ "Book now" | trans }}
+          </a>
           {% endif %}
-        {% endfor %}
+        </div>
+        {% endif %} {% endfor %}
       </div>
     </div>
   </div>
@@ -236,94 +300,114 @@
 
 <div class="container-detalles mb-5">
   <div class="titulo__comentarios my-3">
-    <h2>{{ 'What our customers say'|trans }}</h2>
-    <h4>{{ 'All reviews have been written by real customers who have booked with us.'|trans }}</h4>
+    <h2>{{ "What our customers say" | trans }}</h2>
+    <h4>
+      {{
+        "All reviews have been written by real customers who have booked with us."
+          | trans
+      }}
+    </h4>
   </div>
   <div class="comentario-lista">
-    {% for comentario in comentarios %}
-      {% if comentario.isAprobado %}
-        {% include 'componentes/_comentario.html.twig' %}
-      {% endif %}
-    {% endfor %}
+    {% for comentario in comentarios %} {% if comentario.isAprobado %} {%
+    include 'componentes/_comentario.html.twig' %} {% endif %} {% endfor %}
   </div>
+</div>
+<div class="d-flex justify-content-center">
+  {% do comentarios.setPageRange(2) %}
+  {{ knp_pagination_render(comentarios, "_partials/pagination.html.twig") }}
 </div>
 
 <div class="container-detalles mb-5">
-  <h2 class="my-5">{{ 'Leave a comment'|trans }}</h2>
+  <h2 class="my-5">{{ "Leave a comment" | trans }}</h2>
   {% if app.user %}
-    {{ form_start(form) }}
+  {{ form_start(form) }}
 
-    {{ form_widget(form.contenido, { attr: { class: 'form-control', placeholder: 'Write here...' } }) }}
+  {{
+    form_widget(form.contenido, {
+      attr: { class: "form-control", placeholder: "Write here..." }
+    })
+  }}
 
-    <div class="valoracion">
-      <h3>{{ 'Leave us your review'|trans }}</h3>
-      <div class="stars">
-        <i class="lar la-star" data-value="1"></i>
-        <i class="lar la-star" data-value="2"></i>
-        <i class="lar la-star" data-value="3"></i>
-        <i class="lar la-star" data-value="4"></i>
-        <i class="lar la-star" data-value="5"></i>
-        <input type="hidden" name="nota" id="nota" value="0" />
-      </div>
-      {% if form_errors(form.nota) %}
-        <div class="alert alert-danger">{{ form_errors(form.nota) }}</div>
-      {% endif %}
+  <div class="valoracion">
+    <h3>{{ "Leave us your review" | trans }}</h3>
+    <div class="stars">
+      <i class="lar la-star" data-value="1"></i>
+      <i class="lar la-star" data-value="2"></i>
+      <i class="lar la-star" data-value="3"></i>
+      <i class="lar la-star" data-value="4"></i>
+      <i class="lar la-star" data-value="5"></i>
+      <input type="hidden" name="nota" id="nota" value="0" />
     </div>
+    {% if form_errors(form.nota) %}
+    <div class="alert alert-danger">{{ form_errors(form.nota) }}</div>
+    {% endif %}
+  </div>
 
-    <button type="submit" id="submit-btn" class="btn-primary my-3">
-      {{ 'Leave your comments'|trans }}
-    </button>
-    {{ form_end(form) }}
+  <button type="submit" id="submit-btn" class="btn-primary my-3">
+    {{ "Leave your comments" | trans }}
+  </button>
+  {{ form_end(form) }}
   {% else %}
-    <p>{{ 'Log in to leave a comment'|trans }}</p>
-    <a href="{{ path('app_login') }}" class="desconectado">{{ 'Click here to connect'|trans }}</a>
+  <p>{{ "Log in to leave a comment" | trans }}</p>
+  <a href="{{ path('app_login') }}" class="desconectado">{{
+    "Click here to connect" | trans
+  }}</a>
   {% endif %}
 </div>
 
 <div class="servicios">
   <div class="titulo__servicios">
-    <h2 class="mb-3">{{ 'You may also like'|trans }}</h2>
+    <h2 class="mb-3">{{ "You may also like" | trans }}</h2>
   </div>
   <div class="cards">
-    {% for item in tours %}
-      {% if item.isEstado %}
-        {% if item.id != tour.id %}
-          <article class="card">
-            <img src="{{ asset('uploads/images/' ~ item.imagen) }}" alt="{{ item.titulo }}" />
-            <div class="content card-text">
-              <h4>{{ item.titulo }}</h4>
-              <div class="hidden-elements">
-                {% if item.precio == 0 %}
-                  <h5>{{ 'Price:'|trans }} <span>{{ 'Free Tour'|trans }}</span></h5>
-                {% else %}
-                  <h5>{{ 'Price:'|trans }} {{ item.precio / 100|number_format(2, '.') }} €</h5>
-                {% endif %}
-                <div class="card-btn">
-                  <a href="{{ path('tour', { id: item.id }) }}" class="btn-tertiary-card">
-                    {{ 'More information'|trans }}
-                  </a>
-                  {% if app.user %}
-                    <a href="{{ path('show', { id: item.id }) }}" class="btn-primary-card">
-                      {{ 'Book now'|trans }}
-                    </a>
-                  {% else %}
-                    <a href="{{ path('app_login') }}" class="btn-primary-card">
-                      {{ 'Book now'|trans }}
-                    </a>
-                  {% endif %}
-                </div>
-              </div>
-            </div>
-          </article>
-        {% endif %}
-      {% endif %}
-    {% endfor %}
+    {% for item in tours %} {% if item.isEstado %} {% if item.id != tour.id %}
+    <article class="card">
+      <img
+        src="{{ asset('uploads/images/' ~ item.imagen) }}"
+        alt="{{ item.titulo }}"
+      />
+      <div class="content card-text">
+        <h4>{{ item.titulo }}</h4>
+        <div class="hidden-elements">
+          {% if item.precio == 0 %}
+          <h5>
+            {{ "Price:" | trans }} <span>{{ "Free Tour" | trans }}</span>
+          </h5>
+          {% else %}
+          <h5>
+            {{ "Price:" | trans }}
+            {{ item.precio / 100|number_format(2, '.') }} €
+          </h5>
+          {% endif %}
+          <div class="card-btn">
+            <a
+              href="{{ path('tour', { id: item.id }) }}"
+              class="btn-tertiary-card"
+            >
+              {{ "More information" | trans }}
+            </a>
+            {% if app.user %}
+            <a
+              href="{{ path('show', { id: item.id }) }}"
+              class="btn-primary-card"
+            >
+              {{ "Book now" | trans }}
+            </a>
+            {% else %}
+            <a href="{{ path('app_login') }}" class="btn-primary-card">
+              {{ "Book now" | trans }}
+            </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </article>
+    {% endif %} {% endif %} {% endfor %}
   </div>
 </div>
 
-{% endblock %}
-
-{% block javascripts %}
-  {{ encore_entry_script_tags('templates') }}
-  {{ encore_entry_script_tags('valoraciones') }}
+{% endblock %} {% block javascripts %}
+{{ encore_entry_script_tags("templates") }}
+{{ encore_entry_script_tags("valoraciones") }}
 {% endblock %}

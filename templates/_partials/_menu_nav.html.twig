@@ -277,7 +277,7 @@
       <li class="item">
         <a href="{{ path('home') }}">
           <div class="icon"><i class="fas fa-home"></i></div>
-          <div class="title">Lo<span>g in</span></div>
+          <div class="title">Ho<span>me</span></div>
         </a>
       </li>
       {#
@@ -297,6 +297,30 @@
           <div class="icon"><i class="fas fa-book"></i></div>
           <div class="title">Co<span>ntact</span></div>
         </a>
+      </li>
+      <li class="item">
+        <a href="#" class="language-toggle">
+          <div class="icon">
+            <i class="fas fa-language"></i>
+          </div>
+          <div class="title">Lan<span>guage</span> <i class="fas fa-chevron-down chevron-custom"></i></div>
+        </a>
+        <ul class="idioma-submenu language-dropdown">
+          {% set routeParams = app.request.query.all %}
+          {% if app.request.attributes.get('id') is not null %}
+              {% set routeParams = routeParams|merge({'id': app.request.attributes.get('id')}) %}
+          {% endif %}
+          <li>
+              <a class="idioma-link" href="{{ path(app.request.attributes.get('_route'), routeParams|merge({'_locale': 'en'})) }}">
+                  <img src="{{ asset('uploads/images/icons/en.png') }}" alt="en" class="flag-icon"><span class="ms-3">English</span>
+              </a>
+          </li>
+          <li>
+              <a class="idioma-link" href="{{ path(app.request.attributes.get('_route'), routeParams|merge({'_locale': 'fr'})) }}">
+                  <img src="{{ asset('uploads/images/icons/fr.png') }}" alt="fr" class="flag-icon"><span class="ms-3">Français</span>
+              </a>
+          </li>
+        </ul>
       </li>
       {#
       <div class="item-separator"></div>

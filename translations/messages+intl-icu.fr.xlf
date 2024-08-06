@@ -51,7 +51,7 @@
       </trans-unit>
       <trans-unit id="trPRFkp" resname="Book now">
         <source>Book now</source>
-        <target>Réservez maintenant</target>
+        <target>Réservez</target>
       </trans-unit>
       <trans-unit id="Um4Ah8w" resname="Description">
         <source>Description</source>
@@ -225,10 +225,6 @@
         <source>Welcome to our site !</source>
         <target>Bienvenue sur notre site !</target>
       </trans-unit>
-      <trans-unit id="VdCKOL7" resname="Join us and discover traditional villages and beautiful places full of life and nature">
-        <source>Join us and discover traditional villages and beautiful places full of life and nature</source>
-        <target>Rejoignez-nous et découvrez des villes traditionelles et des endroits magnifiques pleins de vie et de nature</target>
-      </trans-unit>
       <trans-unit id="zSKW61o" resname="Enjoy the experience">
         <source>Enjoy the experience</source>
         <target>Profitez de l'expérience</target>
@@ -364,6 +360,38 @@
       <trans-unit id="5_Lnakf" resname="No booking registered yet">
         <source>No booking registered yet</source>
         <target>Aucune réservation enregistrée pour le moment</target>
+      </trans-unit>
+      <trans-unit id="mYRwTXf" resname="Come on, book your first tour with us and let's walk!!!">
+        <source>Come on, book your first tour with us and let's walk!!!</source>
+        <target>Allez, réservez votre première visite avec nous et marchons!!!</target>
+      </trans-unit>
+      <trans-unit id="tGSH4aA" resname="All rights reserved 2023-2024">
+        <source>All rights reserved 2023-2024</source>
+        <target>Tous droits réservés 2023-2024</target>
+      </trans-unit>
+      <trans-unit id="NOb68Vq" resname="Terms and Conditions">
+        <source>Terms and Conditions</source>
+        <target>Conditions générales</target>
+      </trans-unit>
+      <trans-unit id="BPtACwx" resname="Who are we?">
+        <source>Who are we?</source>
+        <target>Qui sommes-nous ?</target>
+      </trans-unit>
+      <trans-unit id="ZorMn7L" resname="Check the status of your reservation">
+        <source>Check the status of your reservation</source>
+        <target>Vérifiez l'état de votre réservation</target>
+      </trans-unit>
+      <trans-unit id="eB_u2Yx" resname="Booking N°.">
+        <source>Booking N°.</source>
+        <target>Réservation N°.</target>
+      </trans-unit>
+      <trans-unit id="uUisBLh" resname="Payment method">
+        <source>Payment method</source>
+        <target>Méthode de paiement</target>
+      </trans-unit>
+      <trans-unit id="VdCKOL7" resname="Join us and discover traditional villages and beautiful places full of life and nature">
+        <source>Join us and discover traditional villages and beautiful places full of life and nature</source>
+        <target>Rejoignez-nous et découvrez des villes traditionelles et des endroits magnifiques pleins de vie et de nature</target>
       </trans-unit>
     </body>
   </file>
